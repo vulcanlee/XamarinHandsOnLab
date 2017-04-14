@@ -146,6 +146,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\Startup.MobileApp.cs" />
+    <Compile Include="Controllers\TodayTaskController.cs" />
     <Compile Include="Controllers\TodoItemController.cs" />
     <Compile Include="Controllers\DBResetController.cs" />
     <Compile Include="Controllers\UserLoginController.cs" />
@@ -164,6 +165,10 @@
     <Compile Include="Migrations\201704141541290_Add_UserTasks_Table.cs" />
     <Compile Include="Migrations\201704141541290_Add_UserTasks_Table.Designer.cs">
       <DependentUpon>201704141541290_Add_UserTasks_Table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704141715175_Change UserTasks Schema.cs" />
+    <Compile Include="Migrations\201704141715175_Change UserTasks Schema.Designer.cs">
+      <DependentUpon>201704141715175_Change UserTasks Schema.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\APIResult.cs" />
@@ -194,6 +199,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704141541290_Add_UserTasks_Table.resx">
       <DependentUpon>201704141541290_Add_UserTasks_Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704141715175_Change UserTasks Schema.resx">
+      <DependentUpon>201704141715175_Change UserTasks Schema.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

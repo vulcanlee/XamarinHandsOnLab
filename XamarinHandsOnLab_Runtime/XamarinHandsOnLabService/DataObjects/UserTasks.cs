@@ -37,6 +37,10 @@ namespace XamarinHandsOnLabService.DataObjects
         /// </summary>
         public double Checkin_Longitude { get; set; }
         /// <summary>
+        /// 打卡時間
+        /// </summary>
+        public DateTime CheckinDatetime { get; set; }
+        /// <summary>
         /// 第1項子工作主題
         /// </summary>
         public string Condition1_Ttile { get; set; }
