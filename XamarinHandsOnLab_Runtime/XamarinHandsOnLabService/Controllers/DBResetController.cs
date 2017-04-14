@@ -26,10 +26,16 @@ namespace XamarinHandsOnLabService.Controllers
             return fooAPIResult;
         }
 
+        /// <summary>
+        /// 清除所有的資料
+        /// </summary>
         public void CleanAllData()
         {
+            db.UserTasks.RemoveRange(db.UserTasks.ToList());
+
             var fooUsers = db.Users.ToList();
             db.Users.RemoveRange(fooUsers);
+
             db.SaveChanges();
         }
 
