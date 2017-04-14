@@ -1,0 +1,57 @@
+{
+	"variables": [],
+	"info": {
+		"name": "XamarinHandsOnLab",
+		"_postman_id": "fe582658-df83-92ad-45ee-55f556b589c4",
+		"description": "(派工系統)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Azure雲端",
+			"description": "",
+			"item": [
+				{
+					"name": "http://xamarinhandsonlab.azurewebsites.net/api/values",
+					"request": {
+						"url": "http://xamarinhandsonlab.azurewebsites.net/api/values",
+						"method": "GET",
+						"header": [
+							{
+								"key": "ZUMO-API-VERSION",
+								"value": "2.0.0",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "Azure雲端測試 Web API服務是否正常"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "本機",
+			"description": "",
+			"item": [
+				{
+					"name": "http://localhost:51029/api/values",
+					"request": {
+						"url": "http://localhost:51029/api/values",
+						"method": "GET",
+						"header": [
+							{
+								"key": "ZUMO-API-VERSION",
+								"value": "2.0.0",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "本地端測試 Web API服務是否正常"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
