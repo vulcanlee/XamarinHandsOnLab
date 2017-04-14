@@ -149,6 +149,7 @@
     <Compile Include="Controllers\TodayTaskController.cs" />
     <Compile Include="Controllers\TodoItemController.cs" />
     <Compile Include="Controllers\DBResetController.cs" />
+    <Compile Include="Controllers\UploadImageController.cs" />
     <Compile Include="Controllers\UserLoginController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="DataObjects\TodoItem.cs" />
