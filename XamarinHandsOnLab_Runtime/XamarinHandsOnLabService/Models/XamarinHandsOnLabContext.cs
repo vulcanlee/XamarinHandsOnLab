@@ -24,6 +24,7 @@ namespace XamarinHandsOnLabService.Models
 
         public DbSet<TodoItem> TodoItems { get; set; }
         public DbSet<Users> Users { get; set; }
+        public DbSet<UserTasks> UserTasks { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

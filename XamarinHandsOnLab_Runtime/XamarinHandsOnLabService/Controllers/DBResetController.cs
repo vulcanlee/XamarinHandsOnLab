@@ -35,14 +35,19 @@ namespace XamarinHandsOnLabService.Controllers
 
         public void UserInit()
         {
-            db.Users.Add(new DataObjects.Users
+            var fooAdmin = new DataObjects.Users
             {
                 Account = "admin",
                 Password = "admin",
                 Department = "總經理室",
                 Name = "管理者",
                 PhotoUrl = "http://xamarinhandsonlab.azurewebsites.net/Images/Admin.png",
-            });
+            };
+            db.Users.Add(fooAdmin);
+            db.SaveChanges();
+
+            fooAdmin = db.Users.FirstOrDefault(x => x.Account == "admin");
+            fooAdmin.ManagerId = fooAdmin.Id;
 
             for (int i = 0; i < 40; i++)
             {
@@ -53,6 +58,7 @@ namespace XamarinHandsOnLabService.Controllers
                     Department = $"Dept{i}",
                     Name = $"Name{i}",
                     PhotoUrl = "http://xamarinhandsonlab.azurewebsites.net/Images/Man.png",
+                    ManagerId = fooAdmin.Id,
                 };
 
                 if (i % 2 == 0)

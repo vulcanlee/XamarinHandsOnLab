@@ -152,6 +152,7 @@
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="DataObjects\TodoItem.cs" />
     <Compile Include="DataObjects\Users.cs" />
+    <Compile Include="DataObjects\UserTasks.cs" />
     <Compile Include="Migrations\201704091210505_Initial.cs" />
     <Compile Include="Migrations\201704091210505_Initial.Designer.cs">
       <DependentUpon>201704091210505_Initial.cs</DependentUpon>
@@ -159,6 +160,10 @@
     <Compile Include="Migrations\201704140941117_Add_User_Table.cs" />
     <Compile Include="Migrations\201704140941117_Add_User_Table.Designer.cs">
       <DependentUpon>201704140941117_Add_User_Table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704141541290_Add_UserTasks_Table.cs" />
+    <Compile Include="Migrations\201704141541290_Add_UserTasks_Table.Designer.cs">
+      <DependentUpon>201704141541290_Add_UserTasks_Table.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\APIResult.cs" />
@@ -186,6 +191,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704140941117_Add_User_Table.resx">
       <DependentUpon>201704140941117_Add_User_Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704141541290_Add_UserTasks_Table.resx">
+      <DependentUpon>201704141541290_Add_UserTasks_Table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
