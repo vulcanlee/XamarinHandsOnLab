@@ -147,13 +147,21 @@
   <ItemGroup>
     <Compile Include="App_Start\Startup.MobileApp.cs" />
     <Compile Include="Controllers\TodoItemController.cs" />
+    <Compile Include="Controllers\DBResetController.cs" />
+    <Compile Include="Controllers\UserLoginController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="DataObjects\TodoItem.cs" />
+    <Compile Include="DataObjects\Users.cs" />
     <Compile Include="Migrations\201704091210505_Initial.cs" />
     <Compile Include="Migrations\201704091210505_Initial.Designer.cs">
       <DependentUpon>201704091210505_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704140941117_Add_User_Table.cs" />
+    <Compile Include="Migrations\201704140941117_Add_User_Table.Designer.cs">
+      <DependentUpon>201704140941117_Add_User_Table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\APIResult.cs" />
     <Compile Include="Models\XamarinHandsOnLabContext.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -175,6 +183,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201704091210505_Initial.resx">
       <DependentUpon>201704091210505_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704140941117_Add_User_Table.resx">
+      <DependentUpon>201704140941117_Add_User_Table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
