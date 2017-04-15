@@ -48,6 +48,7 @@
     <Compile Include="ViewModels\MDPageViewModel.cs" />
     <Compile Include="ViewModels\NaviPageViewModel.cs" />
     <Compile Include="ViewModels\SigninPageViewModel.cs" />
+    <Compile Include="ViewModels\TaskEditPageViewModel.cs" />
     <Compile Include="Views\MDPage.xaml.cs">
       <DependentUpon>MDPage.xaml</DependentUpon>
     </Compile>
@@ -56,6 +57,9 @@
     </Compile>
     <Compile Include="Views\SigninPage.xaml.cs">
       <DependentUpon>SigninPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TaskEditPage.xaml.cs">
+      <DependentUpon>TaskEditPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -158,6 +162,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\NaviPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\TaskEditPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

@@ -75,6 +75,8 @@ namespace XFTask.ViewModels
 
         #region 命令物件欄位
 
+        public DelegateCommand ItemTappedCommand { get; set; }
+
         public DelegateCommand DoRefreshCommand { get; set; }
 
         #endregion
@@ -119,6 +121,11 @@ namespace XFTask.ViewModels
                     await _dialogService.DisplayAlertAsync("警告", fooAPIResult.Message, "確定");
                 }
                 IsRefreshing = false;
+            });
+
+            ItemTappedCommand = new DelegateCommand(async () =>
+            {
+                await _navigationService.NavigateAsync($"TaskEditPage?ID={UserTasksListSelected.Id}");
             });
             #endregion
 
