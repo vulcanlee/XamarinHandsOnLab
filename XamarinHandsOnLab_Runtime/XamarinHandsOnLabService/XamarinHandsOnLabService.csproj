@@ -172,6 +172,10 @@
     <Compile Include="Migrations\201704141715175_Change UserTasks Schema.Designer.cs">
       <DependentUpon>201704141715175_Change UserTasks Schema.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704150424505_Add Task Status Field.cs" />
+    <Compile Include="Migrations\201704150424505_Add Task Status Field.Designer.cs">
+      <DependentUpon>201704150424505_Add Task Status Field.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\APIResult.cs" />
     <Compile Include="Models\XamarinHandsOnLabContext.cs" />
@@ -204,6 +208,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704141715175_Change UserTasks Schema.resx">
       <DependentUpon>201704141715175_Change UserTasks Schema.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704150424505_Add Task Status Field.resx">
+      <DependentUpon>201704150424505_Add Task Status Field.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

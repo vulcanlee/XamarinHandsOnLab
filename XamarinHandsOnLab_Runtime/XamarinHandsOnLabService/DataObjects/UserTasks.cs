@@ -17,6 +17,10 @@ namespace XamarinHandsOnLabService.DataObjects
         /// </summary>
         public DateTime TaskDateTime { get; set; }
         /// <summary>
+        /// 工作執行進度
+        /// </summary>
+        public TaskStatus Status { get; set; }
+        /// <summary>
         /// 工作的主題
         /// </summary>
         public string Title { get; set; }
@@ -76,5 +80,32 @@ namespace XamarinHandsOnLabService.DataObjects
         /// 該指派工作的回報時間
         /// </summary>
         public DateTime ReportedDatetime { get; set; }
+    }
+
+    /// <summary>
+    /// 工作處理進度
+    /// </summary>
+    public enum TaskStatus
+    {
+        /// <summary>
+        /// 尚未開始
+        /// </summary>
+        NOT_START,
+        /// <summary>
+        /// 已經打卡
+        /// </summary>
+        CHECKIN,
+        /// <summary>
+        /// 完成資料輸入
+        /// </summary>
+        INPUT,
+        /// <summary>
+        /// 圖片已經上傳
+        /// </summary>
+        UPLOAD_IMAGE,
+        /// <summary>
+        /// 已經回報
+        /// </summary>
+        REPORTED,
     }
 }
