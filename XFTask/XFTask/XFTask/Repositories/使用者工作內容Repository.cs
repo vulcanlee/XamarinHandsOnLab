@@ -12,17 +12,16 @@ using XFTask.Models;
 
 namespace XFTask.Repositories
 {
-    public class 使用者登入Repository
+    public class 使用者工作內容Repository
     {
         public APIResult fooAPIResult { get; set; } = new APIResult();
-        public Users Item { get; set; } = new Users();
+        public List<UserTasks> Items { get; set; } = new List<UserTasks>();
 
-
-        public 使用者登入Repository()
+        public 使用者工作內容Repository()
         {
         }
 
-        public async Task<APIResult> GetAsync(string account, string password)
+        public async Task<APIResult> GetDateRangeAsync(string account, DateTime startDate, DateTime lastDate)
         {
             using (HttpClientHandler handler = new HttpClientHandler())
             {
@@ -30,8 +29,8 @@ namespace XFTask.Repositories
                 {
                     try
                     {
-                        // http://xamarinhandsonlab.azurewebsites.net/api/UserLogin?account=user1&password=pw1
-                        string FooUrl = $"{PCLGlobal.UserLoginAPIUrl}";
+                        // http://xamarinhandsonlab.azurewebsites.net/api/UserTasks/Filter?account=user1&lastDate=2017/04/15&startDate=2017/04/15
+                        string FooUrl = $"{PCLGlobal.UserTasksAPIUrl}";
                         HttpResponseMessage response = null;
 
                         client.DefaultRequestHeaders.Add("ZUMO-API-VERSION", "2.0.0");
@@ -39,7 +38,8 @@ namespace XFTask.Repositories
 
                         #region  進行 RESTfull API 呼叫
                         // 使用 Get 方式來呼叫
-                        var fooFullUrl = $"{FooUrl}?account={account}&password={password}";
+                        var fooFullUrl = $"{FooUrl}?account={account}&startDate=" +
+                            startDate.ToString("yyyy/MM/dd") + "&lastDate=" + lastDate.ToString("yyyy/MM/dd");
                         response = await client.GetAsync(fooFullUrl);
 
                         //else if (httpMethod == HttpMethod.Post)
@@ -77,10 +77,10 @@ namespace XFTask.Repositories
                                     fooAPIResult = JsonConvert.DeserializeObject<APIResult>(strResult, new JsonSerializerSettings { MetadataPropertyHandling = MetadataPropertyHandling.Ignore });
                                     if (fooAPIResult.Success == true)
                                     {
-                                        Item = JsonConvert.DeserializeObject<Users>(fooAPIResult.Payload.ToString());
-                                        if (Item == null)
+                                        Items = JsonConvert.DeserializeObject<List<UserTasks>>(fooAPIResult.Payload.ToString());
+                                        if (Items == null)
                                         {
-                                            Item = new Users();
+                                            Items = new List<UserTasks>();
 
                                             fooAPIResult = new APIResult
                                             {
@@ -95,12 +95,12 @@ namespace XFTask.Repositories
                                     }
                                     else
                                     {
-                                        Item = new Users();
+                                        Items = new List<UserTasks>();
                                         fooAPIResult = new APIResult
                                         {
                                             Success = false,
                                             Message = fooAPIResult.Message,
-                                            Payload = Item,
+                                            Payload = null,
                                         };
 
                                     }
@@ -149,24 +149,25 @@ namespace XFTask.Repositories
         /// <returns></returns>
         public async Task Write()
         {
-            string data = JsonConvert.SerializeObject(Item);
-            await StorageUtility.WriteToDataFileAsync("", PCLGlobal.資料主目錄, PCLGlobal.UserLoginAPIName, data);
+            string data = JsonConvert.SerializeObject(Items);
+            await StorageUtility.WriteToDataFileAsync("", PCLGlobal.資料主目錄, PCLGlobal.UserTasksAPIName, data);
         }
 
         /// <summary>
         /// 將資料讀取出來
         /// </summary>
         /// <returns></returns>
-        public async Task<Users> Read()
+        public async Task<List<UserTasks>> Read()
         {
             string data = "";
-            data = await StorageUtility.ReadFromDataFileAsync("", PCLGlobal.資料主目錄, PCLGlobal.UserLoginAPIName);
-            Item = JsonConvert.DeserializeObject<Users>(data);
-            if (Item == null)
+            data = await StorageUtility.ReadFromDataFileAsync("", PCLGlobal.資料主目錄, PCLGlobal.UserTasksAPIName);
+            Items = JsonConvert.DeserializeObject<List<UserTasks>>(data);
+            if(Items == null)
             {
-                Item = new Users();
+                Items = new List<UserTasks>();
             }
-            return Item;
+            return Items;
         }
+
     }
 }

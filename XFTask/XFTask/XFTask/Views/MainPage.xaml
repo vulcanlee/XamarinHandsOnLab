@@ -2,10 +2,38 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:behvior="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="XFTask.Views.MainPage"
-             Title="MainPage">
-  <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-    <Label Text="{Binding Title}" />
-  </StackLayout>
+             Title="待處理的工作">
+
+    <Grid
+        RowSpacing="0" ColumnSpacing="0">
+        <ListView
+            ItemsSource="{Binding UserTasksList}"
+            SelectedItem="{Binding UserTasksListSelected}"
+            IsPullToRefreshEnabled="True"
+            IsRefreshing="{Binding IsRefreshing}"
+            RefreshCommand="{Binding DoRefreshCommand}"
+            >
+            <ListView.Behaviors>
+                <behvior:EventToCommandBehavior 
+                    EventName="ItemTapped"
+                    Command="{Binding ItemTappedCommand}"
+                    />
+            </ListView.Behaviors>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid
+                            RowSpacing="0" ColumnSpacing="0"
+                            >
+                            <Label
+                                Text="{Binding Title}"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
 </ContentPage>
