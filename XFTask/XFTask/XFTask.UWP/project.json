@@ -2,6 +2,8 @@
   "dependencies": {
     "CommonServiceLocator": "1.3.0",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
+    "Newtonsoft.Json": "10.0.2",
+    "PCLStorage": "1.0.2",
     "Prism.Core": "6.3.0",
     "Prism.Forms": "6.3.0",
     "Prism.Unity.Forms": "6.3.0",
