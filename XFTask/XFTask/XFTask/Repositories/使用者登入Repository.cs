@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using XFTask.Helpers;
@@ -30,8 +31,11 @@ namespace XFTask.Repositories
                     try
                     {
                         // http://xamarinhandsonlab.azurewebsites.net/api/UserLogin?account=user1&password=pw1
-                        string FooUrl = $"{PCLGlobal.BaseAPIUrl}";
+                        string FooUrl = $"{PCLGlobal.UserLoginAPIUrl}";
                         HttpResponseMessage response = null;
+
+                        client.DefaultRequestHeaders.Add("ZUMO-API-VERSION", "2.0.0");
+                        //client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                         #region  進行 RESTfull API 呼叫
                         // 使用 Get 方式來呼叫
@@ -71,20 +75,37 @@ namespace XFTask.Repositories
                             {
                                 case HttpStatusCode.OK:
                                     fooAPIResult = JsonConvert.DeserializeObject<APIResult>(strResult, new JsonSerializerSettings { MetadataPropertyHandling = MetadataPropertyHandling.Ignore });
-                                    if(fooAPIResult.Success == true)
+                                    if (fooAPIResult.Success == true)
                                     {
                                         Item = JsonConvert.DeserializeObject<Users>(fooAPIResult.Payload.ToString());
-                                        if(Item == null)
+                                        if (Item == null)
                                         {
                                             Item = new Users();
+
+                                            fooAPIResult = new APIResult
+                                            {
+                                                Success = false,
+                                                Message = $"回傳的 API 內容不正確 : {fooAPIResult.Payload.ToString()}",
+                                                Payload = null,
+                                            };
+                                        }
+                                        else
+                                        {
                                         }
                                     }
                                     else
                                     {
                                         Item = new Users();
+                                        fooAPIResult = new APIResult
+                                        {
+                                            Success = false,
+                                            Message = fooAPIResult.Message,
+                                            Payload = Item,
+                                        };
+
                                     }
                                     string data = JsonConvert.SerializeObject(Item);
-                                    await StorageUtility.WriteToDataFileAsync("", PCLGlobal.資料主目錄, PCLGlobal.UsersAPIName, data);
+                                    await StorageUtility.WriteToDataFileAsync("", PCLGlobal.資料主目錄, PCLGlobal.UserLoginAPIName, data);
                                     break;
 
                                 default:

@@ -28,7 +28,7 @@ namespace XamarinHandsOnLabService.Controllers
             else
             {
                 fooAPIResult.Success = false;
-                fooAPIResult.Message = "";
+                fooAPIResult.Message = "帳號或者密碼不正確";
                 fooAPIResult.Payload = null;
             }
             return fooAPIResult;

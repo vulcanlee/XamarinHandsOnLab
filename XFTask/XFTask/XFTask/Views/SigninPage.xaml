@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="XFTask.Views.SigninPage">
+
+    <Grid
+        RowSpacing="0" ColumnSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="200" />
+        </Grid.RowDefinitions>
+
+        <StackLayout
+            Grid.Row="0" Grid.Column="0"
+            Orientation="Vertical"
+            HorizontalOptions="Fill" VerticalOptions="Center"
+            Margin="30,20">
+            <Label
+                Text="帳號"/>
+            <Entry 
+                Text="{Binding 帳號}"/>
+
+            <Label
+                Text="密碼"/>
+            <Entry 
+                Text="{Binding 密碼}"
+                IsPassword="True"/>
+        </StackLayout>
+
+        <StackLayout
+            Grid.Row="1" Grid.Column="0"
+            Orientation="Vertical"
+            HorizontalOptions="Fill" VerticalOptions="Center"
+            Margin="30,0">
+            <Button Text="登入" Command="{Binding 登入Command}" />
+        </StackLayout>
+
+        <BoxView
+            Grid.Row="0" Grid.Column="0"
+            Grid.RowSpan="2"
+            Color="Black"
+            Opacity="0.7"
+            IsVisible="{Binding 忙碌中遮罩}"/>
+    </Grid>
+</ContentPage>
