@@ -12,7 +12,7 @@
 			"description": "",
 			"item": [
 				{
-					"name": "http://xamarinhandsonlab.azurewebsites.net/api/values",
+					"name": "Azure雲端測試 Web API服務是否正常",
 					"request": {
 						"url": "http://xamarinhandsonlab.azurewebsites.net/api/values",
 						"method": "GET",
@@ -27,6 +27,91 @@
 						"description": "Azure雲端測試 Web API服務是否正常"
 					},
 					"response": []
+				},
+				{
+					"name": "Azure端使用者帳號與密碼驗證",
+					"request": {
+						"url": "http://xamarinhandsonlab.azurewebsites.net/api/UserLogin?account=user1&password=pw1",
+						"method": "GET",
+						"header": [
+							{
+								"key": "ZUMO-API-VERSION",
+								"value": "2.0.0",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "Azure端使用者帳號與密碼驗證"
+					},
+					"response": []
+				},
+				{
+					"name": "Azure端資料庫測試資料重新初始化",
+					"request": {
+						"url": "http://xamarinhandsonlab.azurewebsites.net/api/DBReset",
+						"method": "GET",
+						"header": [
+							{
+								"key": "ZUMO-API-VERSION",
+								"value": "2.0.0",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "Azure端資料庫測試資料重新初始化"
+					},
+					"response": []
+				},
+				{
+					"name": "Azure端的今日工作初始化",
+					"request": {
+						"url": "http://xamarinhandsonlab.azurewebsites.net/api/TodayTask",
+						"method": "GET",
+						"header": [
+							{
+								"key": "ZUMO-API-VERSION",
+								"value": "2.0.0",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Azure端查詢指定Id的工作內容",
+					"request": {
+						"url": "http://xamarinhandsonlab.azurewebsites.net/api/UserTasks/FilterById?id=206",
+						"method": "GET",
+						"header": [
+							{
+								"key": "ZUMO-API-VERSION",
+								"value": "2.0.0",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Azure端查詢使用者特定時間內的工作內容",
+					"request": {
+						"url": "http://xamarinhandsonlab.azurewebsites.net/api/UserTasks/Filter?account=user1&lastDate=2017/04/15&startDate=2017/04/15",
+						"method": "GET",
+						"header": [
+							{
+								"key": "ZUMO-API-VERSION",
+								"value": "2.0.0",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
 				}
 			]
 		},
@@ -35,7 +120,7 @@
 			"description": "",
 			"item": [
 				{
-					"name": "http://localhost:51029/api/values",
+					"name": "本地端測試 Web API服務是否正常",
 					"request": {
 						"url": "http://localhost:51029/api/values",
 						"method": "GET",
@@ -48,6 +133,91 @@
 						],
 						"body": {},
 						"description": "本地端測試 Web API服務是否正常"
+					},
+					"response": []
+				},
+				{
+					"name": "本地端使用者帳號與密碼驗證",
+					"request": {
+						"url": "http://localhost:51029/api/UserLogin?account=user1&password=pw1",
+						"method": "GET",
+						"header": [
+							{
+								"key": "ZUMO-API-VERSION",
+								"value": "2.0.0",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "使用者帳號與密碼驗證"
+					},
+					"response": []
+				},
+				{
+					"name": "本地端資料庫測試資料重新初始化",
+					"request": {
+						"url": "http://localhost:51029/api/DBReset",
+						"method": "GET",
+						"header": [
+							{
+								"key": "ZUMO-API-VERSION",
+								"value": "2.0.0",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "本地端資料庫測試資料重新初始化"
+					},
+					"response": []
+				},
+				{
+					"name": "本地端的今日工作初始化",
+					"request": {
+						"url": "http://localhost:51029/api/TodayTask",
+						"method": "GET",
+						"header": [
+							{
+								"key": "ZUMO-API-VERSION",
+								"value": "2.0.0",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "本地端查詢使用者特定時間內的工作內容",
+					"request": {
+						"url": "http://localhost:51029/api/UserTasks/Filter?account=user1&lastDate=2017/04/15&startDate=2017/04/15",
+						"method": "GET",
+						"header": [
+							{
+								"key": "ZUMO-API-VERSION",
+								"value": "2.0.0",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "本地端查詢指定Id的工作內容",
+					"request": {
+						"url": "http://localhost:51029/api/UserTasks/FilterById?id=206",
+						"method": "GET",
+						"header": [
+							{
+								"key": "ZUMO-API-VERSION",
+								"value": "2.0.0",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
 					},
 					"response": []
 				}
