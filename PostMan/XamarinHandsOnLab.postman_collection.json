@@ -31,7 +31,7 @@
 				{
 					"name": "Azure端使用者帳號與密碼驗證",
 					"request": {
-						"url": "http://xamarinhandsonlab.azurewebsites.net/api/UserLogin?account=user1&password=pw1",
+						"url": "http://xamarinhandsonlab.azurewebsites.net/api/UserLogin?account=user1&password=pw12",
 						"method": "GET",
 						"header": [
 							{
@@ -82,7 +82,7 @@
 				{
 					"name": "Azure端查詢指定Id的工作內容",
 					"request": {
-						"url": "http://xamarinhandsonlab.azurewebsites.net/api/UserTasks/FilterById?id=206",
+						"url": "http://xamarinhandsonlab.azurewebsites.net/api/UserTasks/FilterById?id=6",
 						"method": "GET",
 						"header": [
 							{
@@ -109,6 +109,59 @@
 							}
 						],
 						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Azure尚未完成的工作",
+					"request": {
+						"url": "http://xamarinhandsonlab.azurewebsites.net/api/UserTasks?account=user1",
+						"method": "GET",
+						"header": [
+							{
+								"key": "ZUMO-API-VERSION",
+								"value": "2.0.0",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "模擬可掃描的 QRCode",
+					"request": {
+						"url": "http://xamarinhandsonlab.azurewebsites.net/DoTasks?account=user1",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "請直接使用瀏覽器打開該網址"
+					},
+					"response": []
+				},
+				{
+					"name": "Azure端更新工作紀錄內容",
+					"request": {
+						"url": "http://xamarinhandsonlab.azurewebsites.net/api/UserTasks",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "ZUMO-API-VERSION",
+								"value": "{\"ZUMO-API-VERSION\":\"2.0.0\"}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"Id\":206,\"Account\":\"user1\",\"TaskDateTime\":\"2017-04-15T00:00:00Z\",\"Status\":0,\"Title\":\"11111請前往地點 4 進行簽到與調查作業環境\",\"Description\":\"請到指定地點掃描 QR Code，並且填寫當時工作環境數據\",\"CheckinId\":\"HLRFPAMRQZYKOITFHINAXUIZKRABPV\",\"Checkin_Latitude\":47.640068,\"Checkin_Longitude\":-122.129858,\"CheckinDatetime\":\"1900-01-01T00:00:00Z\",\"Condition1_Ttile\":\"請讀取儀表1的數據\",\"Condition1_Result\":\"\",\"Condition2_Ttile\":\"請讀取儀表2的數據\",\"Condition2_Result\":\"\",\"Condition3_Ttile\":\"請讀取儀表3的數據\",\"Condition3_Result\":\"\",\"PhotoURL\":\"\",\"Reported\":false,\"ReportedDatetime\":\"1900-01-01T00:00:00Z\"}"
+						},
 						"description": ""
 					},
 					"response": []
@@ -217,6 +270,48 @@
 							}
 						],
 						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "本地端尚未完成的工作",
+					"request": {
+						"url": "http://localhost:51029/api/UserTasks?account=user1",
+						"method": "GET",
+						"header": [
+							{
+								"key": "ZUMO-API-VERSION",
+								"value": "2.0.0",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "本地端更新工作紀錄內容",
+					"request": {
+						"url": "http://localhost:51029/api/UserTasks",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "ZUMO-API-VERSION",
+								"value": "2.0.0",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"Id\":206,\"Account\":\"user1\",\"TaskDateTime\":\"2017-04-15T00:00:00Z\",\"Status\":0,\"Title\":\"11111請前往地點 4 進行簽到與調查作業環境\",\"Description\":\"請到指定地點掃描 QR Code，並且填寫當時工作環境數據\",\"CheckinId\":\"HLRFPAMRQZYKOITFHINAXUIZKRABPV\",\"Checkin_Latitude\":47.640068,\"Checkin_Longitude\":-122.129858,\"CheckinDatetime\":\"1900-01-01T00:00:00Z\",\"Condition1_Ttile\":\"請讀取儀表1的數據\",\"Condition1_Result\":\"\",\"Condition2_Ttile\":\"請讀取儀表2的數據\",\"Condition2_Result\":\"\",\"Condition3_Ttile\":\"請讀取儀表3的數據\",\"Condition3_Result\":\"\",\"PhotoURL\":\"\",\"Reported\":false,\"ReportedDatetime\":\"1900-01-01T00:00:00Z\"}"
+						},
 						"description": ""
 					},
 					"response": []
