@@ -15,6 +15,7 @@ namespace XFTask.Helpers
         public static string UserLoginAPIName = $"UserLogin";
         public static string UserLoginAPIUrl = $"{BaseAPIUrl}{UserLoginAPIName}";
         public static string UserTasksAPIName = $"UserTasks";
+        public static string UserTasksCompletionFileName = $"UserTasksCompletion";
         public static string UserTasksAPIUrl = $"{BaseAPIUrl}{UserTasksAPIName}";
         public static string 資料主目錄 = $"Data";
 

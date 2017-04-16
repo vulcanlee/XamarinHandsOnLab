@@ -105,8 +105,7 @@ namespace XFTask.ViewModels
             DoRefreshCommand = new DelegateCommand(async () =>
             {
                 fooAPIResult = await PCLGlobal.使用者工作內容Repository.GetDateRangeAsync(
-                    PCLGlobal.使用者登入Repository.Item.Account,
-                    DateTime.Now.Date,DateTime.Now.Date);
+                    PCLGlobal.使用者登入Repository.Item.Account);
 
                 if (fooAPIResult.Success == true)
                 {

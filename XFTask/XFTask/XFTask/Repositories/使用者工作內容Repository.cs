@@ -21,7 +21,7 @@ namespace XFTask.Repositories
         {
         }
 
-        public async Task<APIResult> GetDateRangeAsync(string account, DateTime startDate, DateTime lastDate)
+        public async Task<APIResult> GetDateRangeAsync(string account)
         {
             using (HttpClientHandler handler = new HttpClientHandler())
             {
@@ -29,7 +29,7 @@ namespace XFTask.Repositories
                 {
                     try
                     {
-                        // http://xamarinhandsonlab.azurewebsites.net/api/UserTasks/Filter?account=user1&lastDate=2017/04/15&startDate=2017/04/15
+                        // http://xamarinhandsonlab.azurewebsites.net/api/UserTasks?account=user1
                         string FooUrl = $"{PCLGlobal.UserTasksAPIUrl}";
                         HttpResponseMessage response = null;
 
@@ -38,8 +38,7 @@ namespace XFTask.Repositories
 
                         #region  進行 RESTfull API 呼叫
                         // 使用 Get 方式來呼叫
-                        var fooFullUrl = $"{FooUrl}?account={account}&startDate=" +
-                            startDate.ToString("yyyy/MM/dd") + "&lastDate=" + lastDate.ToString("yyyy/MM/dd");
+                        var fooFullUrl = $"{FooUrl}?account={account}";
                         response = await client.GetAsync(fooFullUrl);
 
                         //else if (httpMethod == HttpMethod.Post)

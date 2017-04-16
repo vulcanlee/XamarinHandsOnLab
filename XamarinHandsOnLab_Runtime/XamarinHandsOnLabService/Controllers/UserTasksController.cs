@@ -32,6 +32,20 @@ namespace XamarinHandsOnLabService.Controllers
             return fooAPIResult;
         }
 
+        [HttpGet]
+        // GET: api/UserTasks
+        public APIResult Get(string account)
+        {
+            DateTime fooDt = new DateTime(1900, 1, 1).Date;
+            var fooTasks = db.UserTasks.Where(x => x.Account == account
+                           && DbFunctions.TruncateTime(x.ReportedDatetime) == fooDt).ToList();
+
+            fooAPIResult.Success = true;
+            fooAPIResult.Message = "";
+            fooAPIResult.Payload = fooTasks;
+            return fooAPIResult;
+        }
+
         // GET: api/UserTasks/5
         [HttpGet]
         [Route("FilterById")]
