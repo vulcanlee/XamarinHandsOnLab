@@ -1,4 +1,5 @@
-﻿using Prism.Commands;
+﻿using Plugin.Geolocator;
+using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
 using Prism.Navigation;
@@ -16,7 +17,7 @@ namespace XFTask.ViewModels
     public class TaskEditPageViewModel : BindableBase, INavigationAware
     {
         #region Repositories (遠端或本地資料存取)
-
+        public APIResult fooAPIResult { get; set; } = new APIResult();
         #endregion
 
         #region ViewModel Property (用於在 View 中作為綁定之用)
@@ -50,6 +51,13 @@ namespace XFTask.ViewModels
         #endregion
 
         #region 命令物件欄位
+
+        public DelegateCommand GPS打卡Command { get; set; }
+        public DelegateCommand QRCode打卡Command { get; set; }
+        public DelegateCommand 工作資料儲存Command { get; set; }
+        public DelegateCommand 直接拍照Command { get; set; }
+        public DelegateCommand 相片庫挑選Command { get; set; }
+        public DelegateCommand 工作回報Command { get; set; }
         #endregion
 
         #region 注入物件欄位
@@ -73,7 +81,61 @@ namespace XFTask.ViewModels
             #endregion
 
             #region 頁面中綁定的命令
+            QRCode打卡Command = new DelegateCommand(async () =>
+            {
+            });
+            GPS打卡Command = new DelegateCommand(async () =>
+            {
+                #region 使用 Geolocaor Plugin 取得當時手機所在的 GPS 位置座標
+                // https://github.com/jamesmontemagno/GeolocatorPlugin
+                try
+                {
+                    var locator = CrossGeolocator.Current;
+                    locator.DesiredAccuracy = 50;
 
+                    var position = await locator.GetPositionAsync(3000);
+                    if (position == null)
+                    {
+                        await _dialogService.DisplayAlertAsync("警告", "無法取得 GPS 位置", "確定");
+                        return;
+                    }
+
+                    CurrentUserTasksVM.Checkin_Longitude = position.Longitude;
+                    CurrentUserTasksVM.Checkin_Latitude = position.Latitude;
+
+                    var fooUserTasks = UpdateUserTasks(CurrentUserTasksVM);
+                    fooAPIResult = await PCLGlobal.使用者工作內容Repository.PutAsync(fooUserTasks);
+                    if(fooAPIResult.Success == true)
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    await _dialogService.DisplayAlertAsync("警告", "Unable to get location, may need to increase timeout", "確定");
+                }
+                #endregion
+            });
+            工作資料儲存Command = new DelegateCommand(async () =>
+            {
+
+            });
+            直接拍照Command = new DelegateCommand(async () =>
+            {
+
+            });
+            相片庫挑選Command = new DelegateCommand(async () =>
+            {
+
+            });
+            工作回報Command = new DelegateCommand(async () =>
+            {
+
+            });
             #endregion
 
             #region 事件聚合器訂閱

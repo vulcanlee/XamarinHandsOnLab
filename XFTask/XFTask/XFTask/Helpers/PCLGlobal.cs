@@ -11,6 +11,7 @@ namespace XFTask.Helpers
     {
         #region Constant
         public static string BaseUrl = "http://xamarinhandsonlab.azurewebsites.net/";
+        //public static string BaseUrl = "http://localhost:51029/";
         public static string BaseAPIUrl = $"{BaseUrl}api/";
         public static string UserLoginAPIName = $"UserLogin";
         public static string UserLoginAPIUrl = $"{BaseAPIUrl}{UserLoginAPIName}";

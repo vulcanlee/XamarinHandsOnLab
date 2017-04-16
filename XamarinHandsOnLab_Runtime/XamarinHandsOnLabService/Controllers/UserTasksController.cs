@@ -1,4 +1,5 @@
 ﻿using Microsoft.Azure.Mobile.Server.Config;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -73,8 +74,11 @@ namespace XamarinHandsOnLabService.Controllers
         }
 
         // PUT: api/UserTasks/5
-        public void Put(int id, [FromBody]string value)
+        public APIResult Put( [FromBody]UserTasks userTasks)
         {
+            var fooStr = JsonConvert.SerializeObject(userTasks);
+            fooAPIResult.Payload = fooStr;
+            return fooAPIResult;
         }
 
         // DELETE: api/UserTasks/5
