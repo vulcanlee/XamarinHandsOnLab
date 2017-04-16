@@ -13,6 +13,8 @@ using Plugin.Permissions;
 [assembly: UsesFeature("android.hardware.location", Required = false)]
 [assembly: UsesFeature("android.hardware.location.gps", Required = false)]
 [assembly: UsesFeature("android.hardware.location.network", Required = false)]
+[assembly: UsesFeature("android.hardware.camera", Required = false)]
+[assembly: UsesFeature("android.hardware.camera.autofocus", Required = false)]
 // 底下的用法，可以參考 https://developer.xamarin.com/releases/android/mono_for_android_4/mono_for_android_4.0.0/
 [assembly: UsesPermission(Name = Android.Manifest.Permission.AccessCoarseLocation)]
 [assembly: UsesPermission(Name = Android.Manifest.Permission.AccessFineLocation)]
