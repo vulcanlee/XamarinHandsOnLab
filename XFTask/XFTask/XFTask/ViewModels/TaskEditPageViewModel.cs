@@ -177,13 +177,39 @@ namespace XFTask.ViewModels
             });
             工作回報Command = new DelegateCommand(async () =>
             {
+                #region 工作回報
+                var fooUserTasks = UpdateUserTasks(CurrentUserTasksVM).Clone();
+                fooUserTasks.Status = Models.TaskStatus.REPORTED;
+                fooAPIResult = await PCLGlobal.使用者工作內容Repository.PutAsync(fooUserTasks);
+                if (fooAPIResult.Success == true)
+                {
+                    fooAPIResult = await PCLGlobal.使用者工作內容Repository.GetDateRangeAsync(CurrentUserTasksVM.Account);
+                    if (fooAPIResult.Success == true)
+                    {
+                        await ViewModelInit();
+                        _eventAggregator.GetEvent<TaskRefreshEventEvent>().Publish(new TaskRefreshEventPayload
+                        {
+                            Account = CurrentUserTasksVM.Account,
+                        });
+                        await _navigationService.GoBackAsync();
+                    }
+                    else
+                    {
+                        await _dialogService.DisplayAlertAsync("警告", fooAPIResult.Message, "確定");
+                    }
+                }
+                else
+                {
+                    await _dialogService.DisplayAlertAsync("警告", fooAPIResult.Message, "確定");
+                }
+                #endregion
             });
             #endregion
 
             #region 事件聚合器訂閱
             _eventAggregator.GetEvent<ScanResultEvent>().Subscribe(async x =>
             {
-                if(CurrentUserTasksVM.CheckinId == x.Result)
+                if (CurrentUserTasksVM.CheckinId == x.Result)
                 {
                     #region 使用 QR Code 打卡
                     try
