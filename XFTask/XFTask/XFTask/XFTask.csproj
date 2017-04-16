@@ -52,6 +52,7 @@
     <Compile Include="ViewModels\NaviPageViewModel.cs" />
     <Compile Include="ViewModels\SigninPageViewModel.cs" />
     <Compile Include="ViewModels\TaskEditPageViewModel.cs" />
+    <Compile Include="ViewModels\TaskHistoryPageViewModel.cs" />
     <Compile Include="Views\CodeScannerPage.xaml.cs">
       <DependentUpon>CodeScannerPage.xaml</DependentUpon>
     </Compile>
@@ -66,6 +67,9 @@
     </Compile>
     <Compile Include="Views\TaskEditPage.xaml.cs">
       <DependentUpon>TaskEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TaskHistoryPage.xaml.cs">
+      <DependentUpon>TaskHistoryPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -212,6 +216,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\CodeScannerPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\TaskHistoryPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

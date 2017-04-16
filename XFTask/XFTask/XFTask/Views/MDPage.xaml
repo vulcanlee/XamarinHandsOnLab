@@ -11,7 +11,36 @@
                 RowSpacing="0" ColumnSpacing="0"
                 BackgroundColor="Green"
                 >
-                
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="150"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+
+                <Grid
+                    RowSpacing="0" ColumnSpacing="0">
+                    <BoxView
+                        Color="Blue"/>
+                </Grid>
+
+                <ScrollView
+                    Grid.Row="1"
+                    Orientation="Vertical">
+                    <StackLayout
+                        Margin="10,20"
+                        Orientation="Vertical">
+                        <Button
+                            Text="待處理工作"
+                            Command="{Binding 尚未完成派工單Command}"/>
+
+                        <Button
+                            Text="歷史工作"
+                            Command="{Binding 歷史派工單Command}"/>
+                        <Button
+                            Text="登出"
+                            Command="{Binding 登出Command}"/>
+                    </StackLayout>
+                </ScrollView>
             </Grid>
         </ContentPage>
     </MasterDetailPage.Master>
