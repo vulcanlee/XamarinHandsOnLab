@@ -1,4 +1,5 @@
 ﻿using Plugin.Geolocator;
+using Plugin.Media;
 using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
@@ -8,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 using XFTask.Helpers;
 using XFTask.Models;
 
@@ -48,6 +50,7 @@ namespace XFTask.ViewModels
 
         #region ViewModel 內使用到的欄位
         public long Id = 0;
+        public ImageSource MyImageSource ;
         #endregion
 
         #region 命令物件欄位
@@ -106,7 +109,7 @@ namespace XFTask.ViewModels
                     var fooUserTasks = UpdateUserTasks(CurrentUserTasksVM).Clone();
                     fooUserTasks.Status = Models.TaskStatus.CHECKIN;
                     fooAPIResult = await PCLGlobal.使用者工作內容Repository.PutAsync(fooUserTasks);
-                    if(fooAPIResult.Success == true)
+                    if (fooAPIResult.Success == true)
                     {
                         fooAPIResult = await PCLGlobal.使用者工作內容Repository.GetDateRangeAsync(CurrentUserTasksVM.Account);
                         if (fooAPIResult.Success == true)
@@ -114,7 +117,7 @@ namespace XFTask.ViewModels
                             await ViewModelInit();
                             _eventAggregator.GetEvent<TaskRefreshEventEvent>().Publish(new TaskRefreshEventPayload
                             {
-                                 Account = CurrentUserTasksVM.Account,
+                                Account = CurrentUserTasksVM.Account,
                             });
                         }
                         else
@@ -163,7 +166,76 @@ namespace XFTask.ViewModels
             });
             直接拍照Command = new DelegateCommand(async () =>
             {
+                #region 拍照與上傳
+                // https://github.com/jamesmontemagno/MediaPlugin
+                // https://github.com/dsplaisted/PCLStorage
+                // 進行 Plugin.Media 套件的初始化動作
+                await CrossMedia.Current.Initialize();
 
+                // 確認這個裝置是否具有拍照的功能
+                if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
+                {
+                    await _dialogService.DisplayAlertAsync("No Camera", ":( No camera available.", "OK");
+                    return;
+                }
+
+                // 啟動拍照功能，並且儲存到指定的路徑與檔案中
+                var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
+                {
+                    Directory = "Sample",
+                    Name = "Sample.jpg",
+                });
+
+                if (file == null)
+                    return;
+
+
+                // 讀取剛剛拍照的檔案內容，轉換成為 ImageSource，如此，就可以顯示到螢幕上了
+                // 要這麼做的話，是因為圖片檔案是儲存在手機端的永久儲存體中，不是隨著專案安裝時候，就部署上去的
+                // 因此，需要透過 ImageSource.FromStream 來讀取圖片檔案內容，產生出 ImageSource 物件，
+                // 再透過資料繫節綁訂到 View 上的 Image 控制項
+                MyImageSource = ImageSource.FromStream(() =>
+                {
+                    var stream = file.GetStream();
+                    return stream;
+                });
+
+                #region 將剛剛拍照的檔案，上傳到網路伺服器上
+
+                fooAPIResult = await PCLGlobal.使用者工作內容Repository.UploadImageAsync(file);
+                if(fooAPIResult.Success == true)
+                {
+                    var fooUserTasks = UpdateUserTasks(CurrentUserTasksVM).Clone();
+                    fooUserTasks.Status = Models.TaskStatus.UPLOAD_IMAGE;
+                    fooUserTasks.PhotoURL = fooAPIResult.Payload as string;
+                    fooAPIResult = await PCLGlobal.使用者工作內容Repository.PutAsync(fooUserTasks);
+                    if (fooAPIResult.Success == true)
+                    {
+                        fooAPIResult = await PCLGlobal.使用者工作內容Repository.GetDateRangeAsync(CurrentUserTasksVM.Account);
+                        if (fooAPIResult.Success == true)
+                        {
+                            await ViewModelInit();
+                            _eventAggregator.GetEvent<TaskRefreshEventEvent>().Publish(new TaskRefreshEventPayload
+                            {
+                                Account = CurrentUserTasksVM.Account,
+                            });
+                        }
+                        else
+                        {
+                            await _dialogService.DisplayAlertAsync("警告", fooAPIResult.Message, "確定");
+                        }
+                    }
+                    else
+                    {
+                        await _dialogService.DisplayAlertAsync("警告", fooAPIResult.Message, "確定");
+                    }
+                }
+                else
+                {
+
+                }
+                #endregion
+                #endregion
             });
             相片庫挑選Command = new DelegateCommand(async () =>
             {

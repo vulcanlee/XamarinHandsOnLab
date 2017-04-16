@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -231,7 +232,19 @@ namespace XamarinHandsOnLabService.Controllers
         /// <param name="fooDBObj"></param>
         private void UpdateStatus_UPLOAD_IMAGE(UserTasks userTasks, UserTasks targetDB)
         {
+            string fooPath1 = "";
+            string fooPath2 = "";
             targetDB.Status = TaskStatus.UPLOAD_IMAGE;
+            if (userTasks.PhotoURL.IndexOf("http://") >= 0 || userTasks.PhotoURL.IndexOf("https://") >= 0)
+            {
+            }
+            else
+            {
+                fooPath1 = Path.Combine(HttpContext.Current.Server.MapPath("~/Uploads"), userTasks.PhotoURL);
+                fooPath2 = Path.Combine(HttpContext.Current.Server.MapPath("~/Images"), userTasks.PhotoURL);
+                File.Move(fooPath1, fooPath2);
+                targetDB.PhotoURL = $"http://xamarinhandsonlab.azurewebsites.net/Images/{userTasks.PhotoURL}";
+            }
         }
 
         /// <summary>

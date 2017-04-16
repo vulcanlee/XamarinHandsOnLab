@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
+using Plugin.Media.Abstractions;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -244,6 +246,96 @@ namespace XFTask.Repositories
             return fooAPIResult;
         }
 
+        public async Task<APIResult> UploadImageAsync(MediaFile file)
+        {
+            using (HttpClientHandler handler = new HttpClientHandler())
+            {
+                using (HttpClient client = new HttpClient(handler))
+                {
+                    try
+                    {
+                        // http://xamarinhandsonlab.azurewebsites.net/api/UploadImage
+                        string FooUrl = $"{PCLGlobal.UploadImageAPIUrl}";
+                        HttpResponseMessage response = null;
+
+                        client.DefaultRequestHeaders.Add("ZUMO-API-VERSION", "2.0.0");
+
+                        #region  進行 RESTfull API 呼叫
+                        // 使用 Get 方式來呼叫
+                        var fooFullUrl = $"{FooUrl}";
+                        client.DefaultRequestHeaders.Accept.TryParseAdd("application/json");
+
+                        #region 將剛剛拍照的檔案，上傳到網路伺服器上
+                        using (var content = new MultipartFormDataContent())
+                        {
+                            // 取得這個圖片檔案的完整路徑
+                            var path = file.Path;
+                            // 取得這個檔案的最終檔案名稱
+                            var filename = Path.GetFileName(path);
+
+                            // 開啟這個圖片檔案，並且讀取其內容
+                            using (var fs = file.GetStream())
+                            {
+                                var fooSt = Path.GetFileName(path);
+                                var streamContent = new StreamContent(fs);
+                                streamContent.Headers.Add("Content-Type", "application/octet-stream");
+                                streamContent.Headers.Add("Content-Disposition", "form-data; name=\"file\"; filename=\"" + fooSt + "\"");
+                                content.Add(streamContent, "file", filename);
+
+                                // 上傳到遠端伺服器上
+                                response = await client.PostAsync(fooFullUrl, content);
+                            }
+                        }
+                        #endregion
+                        #endregion
+
+                        #region Response
+                        if (response != null)
+                        {
+
+                            String strResult = await response.Content.ReadAsStringAsync();
+
+                            switch (response.StatusCode)
+                            {
+                                case HttpStatusCode.OK:
+                                    fooAPIResult = JsonConvert.DeserializeObject<APIResult>(strResult, new JsonSerializerSettings { MetadataPropertyHandling = MetadataPropertyHandling.Ignore });
+                                    break;
+
+                                default:
+                                    fooAPIResult = new APIResult
+                                    {
+                                        Success = false,
+                                        Message = string.Format("Error Code:{0}, Error Message:{1}", response.StatusCode, response.Content),
+                                        Payload = null,
+                                    };
+                                    break;
+                            }
+                        }
+                        else
+                        {
+                            fooAPIResult = new APIResult
+                            {
+                                Success = false,
+                                Message = "應用程式呼叫 API 發生異常",
+                                Payload = null,
+                            };
+                        }
+                        #endregion
+                    }
+                    catch (Exception ex)
+                    {
+                        fooAPIResult = new APIResult
+                        {
+                            Success = false,
+                            Message = ex.Message,
+                            Payload = ex,
+                        };
+                    }
+                }
+            }
+
+            return fooAPIResult;
+        }
         /// <summary>
         /// 將資料寫入到檔案內
         /// </summary>
@@ -263,7 +355,7 @@ namespace XFTask.Repositories
             string data = "";
             data = await StorageUtility.ReadFromDataFileAsync("", PCLGlobal.資料主目錄, PCLGlobal.UserTasksAPIName);
             Items = JsonConvert.DeserializeObject<List<UserTasks>>(data);
-            if(Items == null)
+            if (Items == null)
             {
                 Items = new List<UserTasks>();
             }
