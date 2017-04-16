@@ -10,7 +10,7 @@ namespace XamarinHandsOnLabService.DataObjects
     /// </summary>
     public class UserTasks
     {
-        public long Id { get; set; }
+        public long Id { get; set; } 
         /// <summary>
         /// 工作分配的帳號
         /// </summary>

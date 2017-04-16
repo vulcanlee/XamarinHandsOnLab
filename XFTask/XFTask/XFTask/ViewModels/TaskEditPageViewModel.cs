@@ -103,15 +103,28 @@ namespace XFTask.ViewModels
                     CurrentUserTasksVM.Checkin_Longitude = position.Longitude;
                     CurrentUserTasksVM.Checkin_Latitude = position.Latitude;
 
-                    var fooUserTasks = UpdateUserTasks(CurrentUserTasksVM);
+                    var fooUserTasks = UpdateUserTasks(CurrentUserTasksVM).Clone();
+                    fooUserTasks.Status = Models.TaskStatus.CHECKIN;
                     fooAPIResult = await PCLGlobal.使用者工作內容Repository.PutAsync(fooUserTasks);
                     if(fooAPIResult.Success == true)
                     {
-
+                        fooAPIResult = await PCLGlobal.使用者工作內容Repository.GetDateRangeAsync(CurrentUserTasksVM.Account);
+                        if (fooAPIResult.Success == true)
+                        {
+                            await ViewModelInit();
+                            _eventAggregator.GetEvent<TaskRefreshEventEvent>().Publish(new TaskRefreshEventPayload
+                            {
+                                 Account = CurrentUserTasksVM.Account,
+                            });
+                        }
+                        else
+                        {
+                            await _dialogService.DisplayAlertAsync("警告", fooAPIResult.Message, "確定");
+                        }
                     }
                     else
                     {
-
+                        await _dialogService.DisplayAlertAsync("警告", fooAPIResult.Message, "確定");
                     }
                 }
                 catch (Exception ex)
@@ -122,7 +135,31 @@ namespace XFTask.ViewModels
             });
             工作資料儲存Command = new DelegateCommand(async () =>
             {
-
+                #region 儲存使用者輸入的資料
+                var fooUserTasks = UpdateUserTasks(CurrentUserTasksVM).Clone();
+                fooUserTasks.Status = Models.TaskStatus.INPUT;
+                fooAPIResult = await PCLGlobal.使用者工作內容Repository.PutAsync(fooUserTasks);
+                if (fooAPIResult.Success == true)
+                {
+                    fooAPIResult = await PCLGlobal.使用者工作內容Repository.GetDateRangeAsync(CurrentUserTasksVM.Account);
+                    if (fooAPIResult.Success == true)
+                    {
+                        await ViewModelInit();
+                        _eventAggregator.GetEvent<TaskRefreshEventEvent>().Publish(new TaskRefreshEventPayload
+                        {
+                            Account = CurrentUserTasksVM.Account,
+                        });
+                    }
+                    else
+                    {
+                        await _dialogService.DisplayAlertAsync("警告", fooAPIResult.Message, "確定");
+                    }
+                }
+                else
+                {
+                    await _dialogService.DisplayAlertAsync("警告", fooAPIResult.Message, "確定");
+                }
+                #endregion
             });
             直接拍照Command = new DelegateCommand(async () =>
             {

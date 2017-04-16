@@ -84,6 +84,11 @@ namespace XFTask.Models
         /// 該指派工作的回報時間
         /// </summary>
         public DateTime ReportedDatetime { get; set; }
+
+        public UserTasks Clone()
+        {
+            return this.MemberwiseClone() as UserTasks;
+        }
     }
 
     /// <summary>

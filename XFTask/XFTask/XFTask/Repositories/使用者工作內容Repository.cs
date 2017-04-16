@@ -21,6 +21,11 @@ namespace XFTask.Repositories
         {
         }
 
+        /// <summary>
+        /// 取得尚未完成的工作
+        /// </summary>
+        /// <param name="account"></param>
+        /// <returns></returns>
         public async Task<APIResult> GetDateRangeAsync(string account)
         {
             using (HttpClientHandler handler = new HttpClientHandler())
@@ -142,6 +147,11 @@ namespace XFTask.Repositories
             return fooAPIResult;
         }
 
+        /// <summary>
+        /// 更新使用者
+        /// </summary>
+        /// <param name="userTasks"></param>
+        /// <returns></returns>
         public async Task<APIResult> PutAsync(UserTasks userTasks)
         {
             using (HttpClientHandler handler = new HttpClientHandler())
@@ -196,36 +206,6 @@ namespace XFTask.Repositories
                             {
                                 case HttpStatusCode.OK:
                                     fooAPIResult = JsonConvert.DeserializeObject<APIResult>(strResult, new JsonSerializerSettings { MetadataPropertyHandling = MetadataPropertyHandling.Ignore });
-                                    if (fooAPIResult.Success == true)
-                                    {
-                                        Items = JsonConvert.DeserializeObject<List<UserTasks>>(fooAPIResult.Payload.ToString());
-                                        if (Items == null)
-                                        {
-                                            Items = new List<UserTasks>();
-
-                                            fooAPIResult = new APIResult
-                                            {
-                                                Success = false,
-                                                Message = $"回傳的 API 內容不正確 : {fooAPIResult.Payload.ToString()}",
-                                                Payload = null,
-                                            };
-                                        }
-                                        else
-                                        {
-                                        }
-                                    }
-                                    else
-                                    {
-                                        Items = new List<UserTasks>();
-                                        fooAPIResult = new APIResult
-                                        {
-                                            Success = false,
-                                            Message = fooAPIResult.Message,
-                                            Payload = null,
-                                        };
-
-                                    }
-                                    await Write();
                                     break;
 
                                 default:

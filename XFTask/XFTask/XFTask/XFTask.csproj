@@ -38,6 +38,7 @@
     <Compile Include="Helpers\PCLGlobal.cs" />
     <Compile Include="Helpers\StorageUtility.cs" />
     <Compile Include="Models\APIResult.cs" />
+    <Compile Include="Models\TaskRefreshEvent.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Models\UserTasks.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

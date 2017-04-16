@@ -129,7 +129,10 @@ namespace XFTask.ViewModels
             #endregion
 
             #region 事件聚合器訂閱
-
+            _eventAggregator.GetEvent<TaskRefreshEventEvent>().Subscribe(async x =>
+            {
+                await ViewModelInit();
+            });
             #endregion
         }
 
