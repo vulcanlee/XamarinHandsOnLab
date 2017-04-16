@@ -21,8 +21,8 @@ namespace XamarinHandsOnLabService.Controllers
         // GET: DoTasks
         public async Task<ActionResult> Index(string account)
         {
-            var fooToday = DateTime.Now.Date;
-            return View(await db.UserTasks.Where(x=>DbFunctions.TruncateTime(x.TaskDateTime) == fooToday
+            var fooToday =new DateTime(1900,1,1).Date;
+            return View(await db.UserTasks.Where(x=>DbFunctions.TruncateTime(x.ReportedDatetime) == fooToday
                                   && x.Account == account).ToListAsync());
         }
 

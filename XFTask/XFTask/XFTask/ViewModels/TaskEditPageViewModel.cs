@@ -87,6 +87,8 @@ namespace XFTask.ViewModels
             #region 頁面中綁定的命令
             QRCode打卡Command = new DelegateCommand(async () =>
             {
+                // 切換到條碼掃描頁面
+                await _navigationService.NavigateAsync("CodeScannerPage");
             });
             GPS打卡Command = new DelegateCommand(async () =>
             {
@@ -133,7 +135,7 @@ namespace XFTask.ViewModels
                 }
                 catch (Exception ex)
                 {
-                    await _dialogService.DisplayAlertAsync("警告", "Unable to get location, may need to increase timeout", "確定");
+                    await _dialogService.DisplayAlertAsync("警告", $"Unable to get location, may need to increase timeout. 發生異常: {ex.Message}", "確定");
                 }
                 #endregion
             });
@@ -175,12 +177,52 @@ namespace XFTask.ViewModels
             });
             工作回報Command = new DelegateCommand(async () =>
             {
-
             });
             #endregion
 
             #region 事件聚合器訂閱
-
+            _eventAggregator.GetEvent<ScanResultEvent>().Subscribe(async x =>
+            {
+                if(CurrentUserTasksVM.CheckinId == x.Result)
+                {
+                    #region 使用 QR Code 打卡
+                    try
+                    {
+                        var fooUserTasks = UpdateUserTasks(CurrentUserTasksVM).Clone();
+                        fooUserTasks.Status = Models.TaskStatus.CHECKIN;
+                        fooAPIResult = await PCLGlobal.使用者工作內容Repository.PutAsync(fooUserTasks);
+                        if (fooAPIResult.Success == true)
+                        {
+                            fooAPIResult = await PCLGlobal.使用者工作內容Repository.GetDateRangeAsync(CurrentUserTasksVM.Account);
+                            if (fooAPIResult.Success == true)
+                            {
+                                await ViewModelInit();
+                                _eventAggregator.GetEvent<TaskRefreshEventEvent>().Publish(new TaskRefreshEventPayload
+                                {
+                                    Account = CurrentUserTasksVM.Account,
+                                });
+                            }
+                            else
+                            {
+                                await _dialogService.DisplayAlertAsync("警告", fooAPIResult.Message, "確定");
+                            }
+                        }
+                        else
+                        {
+                            await _dialogService.DisplayAlertAsync("警告", fooAPIResult.Message, "確定");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        await _dialogService.DisplayAlertAsync("警告", $"發生異常: {ex.Message}", "確定");
+                    }
+                    #endregion
+                }
+                else
+                {
+                    await _dialogService.DisplayAlertAsync("警告", "QR Code 不正確", "確定");
+                }
+            });
             #endregion
         }
 

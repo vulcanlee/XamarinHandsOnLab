@@ -40,6 +40,8 @@ namespace XFTask.UWP
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
 
+            ZXing.Net.Mobile.Forms.WindowsUniversal.ZXingScannerViewRenderer.Init();
+
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
             {

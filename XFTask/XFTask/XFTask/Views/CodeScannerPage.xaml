@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="XFTask.Views.CodeScannerPage"
+             Title="請掃描條碼"
+             x:Name="ThisPage">
+
+    <Grid
+        RowSpacing="0" ColumnSpacing="0"
+        x:Name="ScannerGrid"
+        >
+        <!--條碼掃描控制項，會透過 Code Behind 加入到這裡-->
+    </Grid>
+</ContentPage>

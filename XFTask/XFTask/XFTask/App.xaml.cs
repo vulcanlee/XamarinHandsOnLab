@@ -24,6 +24,7 @@ namespace XFTask
             Container.RegisterTypeForNavigation<MDPage>();
             Container.RegisterTypeForNavigation<NaviPage>();
             Container.RegisterTypeForNavigation<TaskEditPage>();
+            Container.RegisterTypeForNavigation<CodeScannerPage>();
         }
     }
 }

@@ -27,6 +27,8 @@ namespace XFTask.iOS
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App(new iOSInitializer()));
 
+            ZXing.Net.Mobile.Forms.iOS.Platform.Init();
+
             return base.FinishedLaunching(app, options);
         }
     }

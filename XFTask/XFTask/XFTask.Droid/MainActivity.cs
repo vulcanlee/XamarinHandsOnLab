@@ -21,7 +21,8 @@ using Plugin.Permissions;
 [assembly: UsesPermission(Name = Android.Manifest.Permission.Internet)]
 [assembly: UsesPermission(Name = Android.Manifest.Permission.ReadExternalStorage)]
 [assembly: UsesPermission(Name = Android.Manifest.Permission.WriteExternalStorage)]
-
+[assembly: UsesPermission(Android.Manifest.Permission.Flashlight)]
+[assembly: UsesPermission(Android.Manifest.Permission.Camera)]
 namespace XFTask.Droid
 {
     [Activity(Label = "XFTask", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
@@ -35,6 +36,9 @@ namespace XFTask.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+
+            ZXing.Net.Mobile.Forms.Android.Platform.Init();
+
             LoadApplication(new App(new AndroidInitializer()));
         }
 
