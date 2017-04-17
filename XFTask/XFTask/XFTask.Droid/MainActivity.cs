@@ -38,8 +38,10 @@ namespace XFTask.Droid
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
 
+            #region 第三方套件／插件的初始化
             ZXing.Net.Mobile.Forms.Android.Platform.Init();
             var rendererAssemblies = new[] { typeof(ImageCircleRenderer) };
+            #endregion
 
             LoadApplication(new App(new AndroidInitializer()));
         }

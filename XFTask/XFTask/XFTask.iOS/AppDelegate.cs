@@ -28,8 +28,10 @@ namespace XFTask.iOS
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App(new iOSInitializer()));
 
+            #region 第三方套件／插件的初始化
             ZXing.Net.Mobile.Forms.iOS.Platform.Init();
             var rendererAssemblies = new[] { typeof(ImageCircleRenderer) };
+            #endregion
 
             return base.FinishedLaunching(app, options);
         }
