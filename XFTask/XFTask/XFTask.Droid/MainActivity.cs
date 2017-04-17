@@ -26,7 +26,7 @@ using ImageCircle.Forms.Plugin.Droid;
 [assembly: UsesPermission(Android.Manifest.Permission.Camera)]
 namespace XFTask.Droid
 {
-    [Activity(Label = "XFTask", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "派工與回報", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)

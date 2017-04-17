@@ -7,10 +7,18 @@
                   x:Class="XFTask.Views.MDPage">
 
     <MasterDetailPage.Master>
-        <ContentPage Title="Menu">
+        <ContentPage
+            Title="Menu"
+            >
+            <ContentPage.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource" 
+                            iOS="hamburger.png"
+                            Android="hamburger.png"
+                            WinPhone="Assets/hamburger.png" />
+            </ContentPage.Icon>
             <Grid
                 RowSpacing="0" ColumnSpacing="0"
-                BackgroundColor="Green"
+                BackgroundColor="#77bbce"
                 >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="150"/>
@@ -22,6 +30,18 @@
                     RowSpacing="0" ColumnSpacing="0">
                     <BoxView
                         Color="Blue"/>
+                    <Image
+                        HorizontalOptions="Fill" VerticalOptions="Fill"
+                        Aspect="AspectFill"
+                        >
+                        <Image.Source>
+                            <OnPlatform x:TypeArguments="ImageSource"
+                                        iOS="DrawerBackground.png"
+                                        Android="DrawerBackground.png"
+                                        WinPhone="Assets/DrawerBackground.png"
+                                        />
+                        </Image.Source>
+                    </Image>
                     <circleImage:CircleImage
                         Source="{Binding UserPhoto}"
                         BorderThickness="3"

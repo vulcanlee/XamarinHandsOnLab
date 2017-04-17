@@ -37,3 +37,7 @@
 * 若要練習 iOS 應用程式的開發與除錯過程，請學員自備 Mac 電腦與 iOS 手機
 
 * 本課程並不會有過多的基本開發知識與方法詳細教學
+
+# Android APK 下載
+
+[http://bit.ly/2oOAMbY](http://bit.ly/2oOAMbY)

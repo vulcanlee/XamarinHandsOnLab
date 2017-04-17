@@ -160,8 +160,8 @@ namespace XFTask.ViewModels
         private async Task ViewModelInit()
         {
 #if DEBUG
-            帳號 = "user2";
-            密碼 = "pw2";
+            帳號 = "user1";
+            密碼 = "pw1";
 #endif
             await Task.Delay(100);
         }
