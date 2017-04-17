@@ -16,8 +16,10 @@ namespace XFTask.Helpers
         public static string UserLoginAPIName = $"UserLogin";
         public static string UserLoginAPIUrl = $"{BaseAPIUrl}{UserLoginAPIName}";
         public static string UserTasksAPIName = $"UserTasks";
+        public static string UserTasksHistoryAPIName = $"Filter";
         public static string UserTasksCompletionFileName = $"UserTasksCompletion";
         public static string UserTasksAPIUrl = $"{BaseAPIUrl}{UserTasksAPIName}";
+        public static string UserTasksHistoryAPIUrl = $"{BaseAPIUrl}{UserTasksAPIName}/{UserTasksHistoryAPIName}";
         public static string UploadImageAPIName = $"UploadImage";
         public static string UploadImageAPIUrl = $"{BaseAPIUrl}{UploadImageAPIName}";
         public static string 資料主目錄 = $"Data";
@@ -27,6 +29,7 @@ namespace XFTask.Helpers
         #region Repository
         public static 使用者登入Repository 使用者登入Repository = new 使用者登入Repository();
         public static 使用者工作內容Repository 使用者工作內容Repository = new 使用者工作內容Repository();
+        public static 使用者歷史工作內容Repository 使用者歷史工作內容Repository = new 使用者歷史工作內容Repository();
         #endregion
     }
 }
