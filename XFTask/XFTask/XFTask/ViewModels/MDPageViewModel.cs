@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using XFTask.Helpers;
 
 namespace XFTask.ViewModels
 {
@@ -73,6 +74,9 @@ namespace XFTask.ViewModels
             });
             登出Command = new DelegateCommand(async () =>
             {
+                await PCLGlobal.使用者登入Repository.Read();
+                PCLGlobal.使用者登入Repository.Item.Account = "";
+                await PCLGlobal.使用者登入Repository.Write();
                 await _navigationService.NavigateAsync("xf:///SigninPage");
             });
             #endregion

@@ -1,6 +1,7 @@
 ﻿using Prism.Unity;
 using XFTask.Views;
 using Xamarin.Forms;
+using XFTask.Helpers;
 
 namespace XFTask
 {

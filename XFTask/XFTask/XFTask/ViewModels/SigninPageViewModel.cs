@@ -127,9 +127,13 @@ namespace XFTask.ViewModels
 
         }
 
-        public void OnNavigatingTo(NavigationParameters parameters)
+        public async void OnNavigatingTo(NavigationParameters parameters)
         {
-
+            await PCLGlobal.使用者登入Repository.Read();
+            if (string.IsNullOrEmpty(PCLGlobal.使用者登入Repository.Item.Account)==false)
+            {
+                await _navigationService.NavigateAsync("xf:///MDPage/NaviPage/MainPage");
+            }
         }
 
         public async void OnNavigatedTo(NavigationParameters parameters)
