@@ -15,15 +15,6 @@ namespace XFTask.Helpers
     public class StorageUtility
     {
         /// <summary>
-        /// 存取 Resource URI
-        /// </summary>
-        public static readonly string BaseUri = "ms-appx:///";
-        /// <summary>
-        /// 存取 Local Data URI
-        /// </summary>
-        public static readonly string LocalUri = "ms-appdata:///local/";
-
-        /// <summary>
         /// 將所指定的字串寫入到指定目錄的檔案內
         /// </summary>
         /// <param name="folderName">目錄名稱</param>
