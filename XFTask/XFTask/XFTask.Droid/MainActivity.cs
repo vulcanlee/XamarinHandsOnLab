@@ -9,6 +9,7 @@ using Android.OS;
 using Prism.Unity;
 using Microsoft.Practices.Unity;
 using Plugin.Permissions;
+using ImageCircle.Forms.Plugin.Droid;
 
 [assembly: UsesFeature("android.hardware.location", Required = false)]
 [assembly: UsesFeature("android.hardware.location.gps", Required = false)]
@@ -38,6 +39,7 @@ namespace XFTask.Droid
             global::Xamarin.Forms.Forms.Init(this, bundle);
 
             ZXing.Net.Mobile.Forms.Android.Platform.Init();
+            var rendererAssemblies = new[] { typeof(ImageCircleRenderer) };
 
             LoadApplication(new App(new AndroidInitializer()));
         }

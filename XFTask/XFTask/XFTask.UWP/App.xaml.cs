@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ImageCircle.Forms.Plugin.UWP;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -41,6 +42,7 @@ namespace XFTask.UWP
         {
 
             ZXing.Net.Mobile.Forms.WindowsUniversal.ZXingScannerViewRenderer.Init();
+            var rendererAssemblies = new[] { typeof(ImageCircleRenderer) };
 
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)

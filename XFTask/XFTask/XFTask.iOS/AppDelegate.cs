@@ -6,6 +6,7 @@ using Foundation;
 using UIKit;
 using Prism.Unity;
 using Microsoft.Practices.Unity;
+using ImageCircle.Forms.Plugin.iOS;
 
 namespace XFTask.iOS
 {
@@ -28,6 +29,7 @@ namespace XFTask.iOS
             LoadApplication(new App(new iOSInitializer()));
 
             ZXing.Net.Mobile.Forms.iOS.Platform.Init();
+            var rendererAssemblies = new[] { typeof(ImageCircleRenderer) };
 
             return base.FinishedLaunching(app, options);
         }

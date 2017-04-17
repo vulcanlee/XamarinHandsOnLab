@@ -10,6 +10,7 @@
     "Unity": "4.0.1",
     "Xam.Plugin.Geolocator": "3.0.4",
     "Xam.Plugin.Media": "2.6.2",
+    "Xam.Plugins.Forms.ImageCircle": "1.8.1",
     "Xamarin.Forms": "2.3.3.193",
     "ZXing.Net.Mobile.Forms": "2.2.9"
   },

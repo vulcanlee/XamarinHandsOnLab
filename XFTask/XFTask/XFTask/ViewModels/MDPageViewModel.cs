@@ -22,6 +22,30 @@ namespace XFTask.ViewModels
 
         #region 基本型別與類別的 Property
 
+        #region UserPhoto
+        private string _UserPhoto;
+        /// <summary>
+        /// UserPhoto
+        /// </summary>
+        public string UserPhoto
+        {
+            get { return this._UserPhoto; }
+            set { this.SetProperty(ref this._UserPhoto, value); }
+        }
+        #endregion
+
+        #region UserName
+        private string _UserName;
+        /// <summary>
+        /// UserName
+        /// </summary>
+        public string UserName
+        {
+            get { return this._UserName; }
+            set { this.SetProperty(ref this._UserName, value); }
+        }
+        #endregion
+
         #endregion
 
         #region 集合類別的 Property
@@ -122,6 +146,11 @@ namespace XFTask.ViewModels
         /// <returns></returns>
         private async Task ViewModelInit()
         {
+            if (string.IsNullOrEmpty(PCLGlobal.使用者登入Repository.Item.PhotoUrl) == false)
+            {
+                UserPhoto = PCLGlobal.使用者登入Repository.Item.PhotoUrl;
+            }
+            UserName = PCLGlobal.使用者登入Repository.Item.Name;
             await Task.Delay(100);
         }
         #endregion
