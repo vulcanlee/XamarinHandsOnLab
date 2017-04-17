@@ -11,6 +11,9 @@ using XamarinHandsOnLabService.Models;
 
 namespace XamarinHandsOnLabService.Controllers
 {
+    /// <summary>
+    /// 提供 App 可以上傳圖片的 API
+    /// </summary>
     [MobileAppController]
     public class UploadImageController : ApiController
     {
@@ -19,17 +22,17 @@ namespace XamarinHandsOnLabService.Controllers
         [HttpPost]
         public APIResult Post()
         {
-            string fileName = "";
+            string fileName = "";  // 產生在 Server 上的圖片檔案名稱(將會配置 Guid
             string path = "";
 
             var file = HttpContext.Current.Request.Files.Count > 0 ? HttpContext.Current.Request.Files[0] : null;
 
             if (file != null && file.ContentLength > 0)
             {
-                fileName = Path.GetFileName(file.FileName) + Path.GetExtension(file.FileName);
-                fileName = Path.GetFileName(file.FileName);
+                // 產生在 Server 上的圖片檔案名稱(將會配置 Guid
                 fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName); ;
 
+                // 將圖片儲存到 Web Server 的 Uploads 目錄下
                 path = Path.Combine(
                     HttpContext.Current.Server.MapPath("~/Uploads"),
                     fileName

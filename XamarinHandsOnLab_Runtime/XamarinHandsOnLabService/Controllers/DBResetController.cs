@@ -9,6 +9,12 @@ using XamarinHandsOnLabService.Models;
 
 namespace XamarinHandsOnLabService.Controllers
 {
+    /// <summary>
+    /// 將原有資料都進行刪除，並且產生新的使用者帳號
+    /// 規則：
+    ///    帳號名稱：user#
+    ///    密碼：pw#
+    /// </summary>
     [MobileAppController]
     public class DBResetController : ApiController
     {
@@ -31,16 +37,21 @@ namespace XamarinHandsOnLabService.Controllers
         /// </summary>
         public void CleanAllData()
         {
+            // 將工作資料全部刪除掉
             db.UserTasks.RemoveRange(db.UserTasks.ToList());
-
+            // 將使用者的資料全部刪除掉
             var fooUsers = db.Users.ToList();
             db.Users.RemoveRange(fooUsers);
 
             db.SaveChanges();
         }
 
+        /// <summary>
+        /// 進行使用者資料初始化
+        /// </summary>
         public void UserInit()
         {
+            #region 建立管理者的帳號
             var fooAdmin = new DataObjects.Users
             {
                 Account = "admin",
@@ -51,13 +62,15 @@ namespace XamarinHandsOnLabService.Controllers
             };
             db.Users.Add(fooAdmin);
             db.SaveChanges();
+            #endregion
 
             fooAdmin = db.Users.FirstOrDefault(x => x.Account == "admin");
             fooAdmin.ManagerId = fooAdmin.Id;
 
+            #region 建立四十個使用者帳號
             for (int i = 0; i < 40; i++)
             {
-               var fooUser= new DataObjects.Users
+                var fooUser = new DataObjects.Users
                 {
                     Account = $"user{i}",
                     Password = $"pw{i}",
@@ -74,6 +87,8 @@ namespace XamarinHandsOnLabService.Controllers
 
                 db.Users.Add(fooUser);
             }
+            #endregion
+
             db.SaveChanges();
         }
     }

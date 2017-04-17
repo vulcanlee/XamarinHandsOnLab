@@ -13,6 +13,9 @@ using XamarinHandsOnLabService.Models;
 
 namespace XamarinHandsOnLabService.Controllers
 {
+    /// <summary>
+    /// 產生今天的工作紀錄，每個使用者都會有五個新的工作
+    /// </summary>
     [MobileAppController]
     public class TodayTaskController : ApiController
     {
@@ -23,18 +26,19 @@ namespace XamarinHandsOnLabService.Controllers
         public APIResult Get()
         {
             var fooToday = DateTime.Now.Date;
+            // 查詢今天產生的工作有那些
             var fooTasks = db.UserTasks.Where(x => DbFunctions.TruncateTime(x.TaskDateTime) == fooToday).ToList();
             if (fooTasks.Count > 0)
             {
+                #region 今天的工作已經有產生了
                 fooAPIResult.Success = false;
                 fooAPIResult.Message = DateTime.Now.ToString("yyyy.MM.dd") + " 已經有存在的的代辦工作";
                 fooAPIResult.Payload = null;
+                #endregion
             }
             else
             {
-                var fooAdmin = db.Users.FirstOrDefault(x => x.Account == "admin");
-                fooAdmin.ManagerId = fooAdmin.Id;
-
+                #region 幫每個使用者，產生今天要用到的五個工作
                 for (int i = 0; i < 40; i++)
                 {
                     var fooAccount = $"user{i}";
@@ -57,15 +61,15 @@ namespace XamarinHandsOnLabService.Controllers
                             Checkin_Longitude = 0,
                             PhotoURL = "",
                             Reported = false,
-                            ReportedDatetime = new DateTime(1900, 1, 1), 
+                            ReportedDatetime = new DateTime(1900, 1, 1),
                             CheckinDatetime = new DateTime(1900, 1, 1),
                         };
 
                         db.UserTasks.Add(fooTask);
                     }
                 }
+                #endregion
                 db.SaveChanges();
-
 
                 fooAPIResult.Success = true;
                 fooAPIResult.Message = DateTime.Now.ToString("yyyy.MM.dd") + " 的代辦工作已經產生完成";
@@ -74,6 +78,11 @@ namespace XamarinHandsOnLabService.Controllers
             return fooAPIResult;
         }
 
+        /// <summary>
+        /// 產生隨機字串，用於 QR Code 的內容
+        /// </summary>
+        /// <param name="size"></param>
+        /// <returns></returns>
         private string RandomString(int size)
         {
             StringBuilder builder = new StringBuilder();
