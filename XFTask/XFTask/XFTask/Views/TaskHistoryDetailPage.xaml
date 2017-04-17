@@ -7,6 +7,7 @@
              Title="工作記錄"
              >
 
+    <!--查詢歷史資料的時候，使用這個頁面，提供唯讀的頁面操作-->
     <ScrollView
         Orientation="Vertical">
         <StackLayout

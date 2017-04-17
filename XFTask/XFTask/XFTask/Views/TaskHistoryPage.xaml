@@ -7,8 +7,19 @@
              x:Class="XFTask.Views.TaskHistoryPage"
              Title="歷史工作清單">
 
+    <!--顯示最近七天的所有工作紀錄清單-->
     <Grid
         RowSpacing="0" ColumnSpacing="0">
+
+        <!--
+        工作清單將會使用 ListView 控制項來呈現
+        ItemsSource : 設定要顯示清單的資料來源
+        IsPullToRefreshEnabled ： 是否啟動下拉就更新資料的功能
+        IsRefreshing ： ListView 現在是否處於正在更新資料的狀態(螢幕上會有一個轉圈圈的動畫出現)
+        RefreshCommand ： 當下拉手勢操作觸發之後，就會執行這裡所綁定的命令
+        HasUnevenRows ： 每筆紀錄的高度不會等高
+        -->
+        
         <ListView
             ItemsSource="{Binding UserTasksList}"
             SelectedItem="{Binding UserTasksListSelected}"
@@ -17,6 +28,7 @@
             RefreshCommand="{Binding DoRefreshCommand}"
             HasUnevenRows="True"
             >
+            <!--這裡定義當使用者點擊某筆紀錄的時候，會執行所指定的命令-->
             <ListView.Behaviors>
                 <behvior:EventToCommandBehavior 
                     EventName="ItemTapped"
@@ -26,19 +38,23 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
+                        <!--這裡定義每筆紀錄要出現的內容與樣貌-->
                         <Grid
                             RowSpacing="0" ColumnSpacing="0"
                             HeightRequest="80"
                             Margin="10,0"
                             >
+                            <!--每筆紀錄共有兩列，都是一樣的高度-->
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*" />
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
+                            <!--每筆紀錄有兩個欄位，第一個欄位固定式 120 ，第二個欄位則是剩餘的空間-->
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="120" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
+                            <!--該工作紀錄現在的狀態；該文字會橫跨兩個Row-->
                             <Label
                                 Grid.Row="0" Grid.Column="0"
                                 Grid.RowSpan="2"
@@ -48,11 +64,13 @@
                                 FontSize="Large"
                                 TextColor="Pink"
                                 />
+                            <!--該工作的主題名稱-->
                             <Label
                                 Grid.Row="0" Grid.Column="1"
                                 Text="{Binding Title}"
                                 FontSize="Large"
                                 />
+                            <!--該工作的產生時間-->
                             <Label
                                 Grid.Row="2" Grid.Column="1"
                                 HorizontalOptions="End"

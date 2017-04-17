@@ -5,6 +5,7 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="XFTask.Views.SigninPage">
 
+    <!--使用者帳戶與密碼登入身分驗證頁面-->
     <Grid
         RowSpacing="0" ColumnSpacing="0">
         <Grid.RowDefinitions>
@@ -37,6 +38,7 @@
             <Button Text="登入" Command="{Binding 登入Command}" />
         </StackLayout>
 
+        <!--當進行登入，進行網路 Web API 呼叫的時候，會顯示這個半透明的遮罩-->
         <BoxView
             Grid.Row="0" Grid.Column="0"
             Grid.RowSpan="2"

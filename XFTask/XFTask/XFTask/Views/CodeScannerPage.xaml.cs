@@ -31,6 +31,7 @@ namespace XFTask.Views
                 BarcodeFormat.CODABAR
             };
             #endregion
+  
             #region 建立條碼掃描控制項
             zxing = new ZXingScannerView
             {
@@ -55,7 +56,9 @@ namespace XFTask.Views
 
             });
             #endregion
+     
             #endregion
+  
             #region 建立條碼掃描遮罩
             overlay = new ZXingDefaultOverlay
             {
@@ -68,6 +71,7 @@ namespace XFTask.Views
                 zxing.IsTorchOn = !zxing.IsTorchOn;
             };
             #endregion
+     
             // 將條碼掃描與分析控制項，加入到頁面上
             ScannerGrid.Children.Add(zxing);
             // 將遮罩加入到頁面上

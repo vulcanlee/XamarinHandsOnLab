@@ -6,6 +6,7 @@
              x:Class="XFTask.Views.TaskEditPage"
              Title="工作記錄修改">
 
+    <!--使用者可以透過這個頁面，進行打卡，填寫工作內容、上傳圖片、回報(結束)工作等操作-->
     <ScrollView
         Orientation="Vertical">
         <StackLayout
@@ -281,6 +282,7 @@
                     TextColor="White"/>
             </Grid>
 
+            <!--工作回報的詳細資訊-->
             <Grid
                 RowSpacing="0" ColumnSpacing="0"
                 HorizontalOptions="Fill"

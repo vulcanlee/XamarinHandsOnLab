@@ -7,10 +7,13 @@
                   x:Class="XFTask.Views.MDPage">
 
     <MasterDetailPage.Master>
+        <!--導航抽屜頁面的抽屜畫面內容宣告-->
         <ContentPage
             Title="Menu"
             >
+            <!--宣告漢堡按鈕圖片-->
             <ContentPage.Icon>
+                <!--因為每個平台的圖片路徑不同，所以，需要使用 OnPlatform 來指定不同平台的圖片名稱-->
                 <OnPlatform x:TypeArguments="FileImageSource" 
                             iOS="hamburger.png"
                             Android="hamburger.png"
@@ -26,6 +29,7 @@
                     <RowDefinition Height="50"/>
                 </Grid.RowDefinitions>
 
+                <!--這裡宣告最上方的使用者登入資訊與公司名稱的樣貌-->
                 <Grid
                     RowSpacing="0" ColumnSpacing="0">
                     <BoxView
@@ -34,7 +38,9 @@
                         HorizontalOptions="Fill" VerticalOptions="Fill"
                         Aspect="AspectFill"
                         >
+                        <!--背景圖片-->
                         <Image.Source>
+                            <!--因為每個平台的圖片路徑不同，所以，需要使用 OnPlatform 來指定不同平台的圖片名稱-->
                             <OnPlatform x:TypeArguments="ImageSource"
                                         iOS="DrawerBackground.png"
                                         Android="DrawerBackground.png"
@@ -67,6 +73,7 @@
                         />
                 </Grid>
 
+                <!--這裡使用捲動面板配置，宣告各種可以使用的功能-->
                 <ScrollView
                     Grid.Row="1"
                     Orientation="Vertical">
@@ -84,6 +91,7 @@
                             Text="模擬可掃描的 QRCode"
                             Command="{Binding 模擬可掃描的QRCodeCommand}"
                             />
+                        <!--這個按鈕僅會在使用 admin 帳號登入的時候，才會出現-->
                         <Button
                             Text="管理者模式命令"
                             Command="{Binding 管理者模式命令Command}"

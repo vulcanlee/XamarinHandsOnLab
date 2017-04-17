@@ -7,6 +7,7 @@
              Title="請掃描條碼"
              x:Name="ThisPage">
 
+    <!--進行 QR Code 掃描的時候，會出現的頁面-->
     <Grid
         RowSpacing="0" ColumnSpacing="0"
         x:Name="ScannerGrid"
