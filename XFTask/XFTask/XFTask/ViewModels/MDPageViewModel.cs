@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 using XFTask.Helpers;
 
 namespace XFTask.ViewModels
@@ -46,6 +47,18 @@ namespace XFTask.ViewModels
         }
         #endregion
 
+        #region 管理者模式
+        private bool _管理者模式=false;
+        /// <summary>
+        /// 管理者模式
+        /// </summary>
+        public bool 管理者模式
+        {
+            get { return this._管理者模式; }
+            set { this.SetProperty(ref this._管理者模式, value); }
+        }
+        #endregion
+
         #endregion
 
         #region 集合類別的 Property
@@ -63,6 +76,8 @@ namespace XFTask.ViewModels
 
         public DelegateCommand 尚未完成派工單Command { get; set; }
         public DelegateCommand 歷史派工單Command { get; set; }
+        public DelegateCommand 管理者模式命令Command { get; set; }
+        public DelegateCommand 模擬可掃描的QRCodeCommand { get; set; }
         public DelegateCommand 登出Command { get; set; }
 
         #endregion
@@ -102,6 +117,14 @@ namespace XFTask.ViewModels
                 PCLGlobal.使用者登入Repository.Item.Account = "";
                 await PCLGlobal.使用者登入Repository.Write();
                 await _navigationService.NavigateAsync("xf:///SigninPage");
+            });
+            管理者模式命令Command = new DelegateCommand(async () =>
+            {
+                await _dialogService.DisplayAlertAsync("資訊", "你可以在此建置專屬管理者所需要的功能", "確定");
+            });
+            模擬可掃描的QRCodeCommand = new DelegateCommand( () =>
+            {
+                Device.OpenUri(new Uri($"http://xamarinhandsonlab.azurewebsites.net/DoTasks?account={PCLGlobal.使用者登入Repository.Item.Account}"));
             });
             #endregion
 
@@ -151,6 +174,14 @@ namespace XFTask.ViewModels
                 UserPhoto = PCLGlobal.使用者登入Repository.Item.PhotoUrl;
             }
             UserName = PCLGlobal.使用者登入Repository.Item.Name;
+            if(PCLGlobal.使用者登入Repository.Item.Account.ToLower() == "admin")
+            {
+                管理者模式 = true;
+            }
+            else
+            {
+                管理者模式 = false;
+            }
             await Task.Delay(100);
         }
         #endregion

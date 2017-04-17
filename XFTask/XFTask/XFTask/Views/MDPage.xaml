@@ -61,6 +61,14 @@
                             Text="歷史工作"
                             Command="{Binding 歷史派工單Command}"/>
                         <Button
+                            Text="模擬可掃描的 QRCode"
+                            Command="{Binding 模擬可掃描的QRCodeCommand}"
+                            />
+                        <Button
+                            Text="管理者模式命令"
+                            Command="{Binding 管理者模式命令Command}"
+                            IsVisible="{Binding 管理者模式}"/>
+                        <Button
                             Text="登出"
                             Command="{Binding 登出Command}"/>
                     </StackLayout>

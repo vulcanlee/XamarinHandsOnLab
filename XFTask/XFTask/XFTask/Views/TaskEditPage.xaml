@@ -170,7 +170,9 @@
 
             <Grid
                 RowSpacing="0" ColumnSpacing="0"
-                HorizontalOptions="Fill">
+                HorizontalOptions="Fill"
+                IsVisible="{Binding CurrentUserTasksVM.Status,Converter={StaticResource TaskCHECKINToVisibleConverter}}"
+                >
                 <BoxView
                     Color="Gray"/>
                 <StackLayout
@@ -223,7 +225,9 @@
 
             <Grid
                 RowSpacing="0" ColumnSpacing="0"
-                HorizontalOptions="Fill">
+                HorizontalOptions="Fill"
+                IsVisible="{Binding CurrentUserTasksVM.Status,Converter={StaticResource TaskINPUTToVisibleConverter}}"
+                >
                 <BoxView
                     Color="Gray"/>
                 <StackLayout
@@ -279,7 +283,9 @@
 
             <Grid
                 RowSpacing="0" ColumnSpacing="0"
-                HorizontalOptions="Fill">
+                HorizontalOptions="Fill"
+                IsVisible="{Binding CurrentUserTasksVM.Status,Converter={StaticResource TaskUPLOAD_IMAGEToVisibleConverter}}"
+                >
                 <BoxView
                     Color="Gray"/>
                 <StackLayout

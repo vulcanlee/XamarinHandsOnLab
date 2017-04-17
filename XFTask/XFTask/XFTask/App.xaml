@@ -8,6 +8,11 @@
     <prism:PrismApplication.Resources>
         <ResourceDictionary>
             <converter:TaskStatusToStringConverter x:Key="TaskStatusToStringConverter" />
+            <converter:TaskStatusToVisibleConverter x:Key="TaskCHECKINToVisibleConverter" WatchStatus="CHECKIN"/>
+            <converter:TaskStatusToVisibleConverter x:Key="TaskINPUTToVisibleConverter" WatchStatus="INPUT"/>
+            <converter:TaskStatusToVisibleConverter x:Key="TaskREPORTEDToVisibleConverter" WatchStatus="REPORTED"/>
+            <converter:TaskStatusToVisibleConverter x:Key="TaskUPLOAD_IMAGEToVisibleConverter" WatchStatus="UPLOAD_IMAGE"/>
+            <converter:TaskStatusToVisibleConverter x:Key="TaskNOT_STARTToVisibleConverter" WatchStatus="NOT_START"/>
         </ResourceDictionary>
     </prism:PrismApplication.Resources>
 </prism:PrismApplication>
