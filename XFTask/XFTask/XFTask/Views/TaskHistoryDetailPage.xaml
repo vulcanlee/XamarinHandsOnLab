@@ -71,7 +71,7 @@
                     Margin="10,0"
                     >
                     <Label 
-                        Text="{Binding CurrentUserTasksVM.Status}"
+                        Text="{Binding CurrentUserTasksVM.Status, Converter={StaticResource TaskStatusToStringConverter}}"
                         HorizontalOptions="Fill" VerticalOptions="Start"
                         TextColor="White"
                         FontSize="Large"/>

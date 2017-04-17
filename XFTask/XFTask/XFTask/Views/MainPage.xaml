@@ -44,7 +44,7 @@
                                 Grid.RowSpan="2"
                                 Margin="10,0"
                                 VerticalOptions="Center" HorizontalOptions="Center"
-                                Text="{Binding Status}"
+                                Text="{Binding Status, Converter={StaticResource TaskStatusToStringConverter}}"
                                 FontSize="Large"
                                 TextColor="Pink"
                                 />

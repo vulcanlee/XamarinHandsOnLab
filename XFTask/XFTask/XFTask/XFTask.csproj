@@ -35,6 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Converters\TaskStatusToStringConverter.cs" />
     <Compile Include="Helpers\PCLGlobal.cs" />
     <Compile Include="Helpers\StorageUtility.cs" />
     <Compile Include="Models\APIResult.cs" />
@@ -190,7 +191,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Behaviors\" />
-    <Folder Include="Converters\" />
     <Folder Include="CustomControls\" />
     <Folder Include="Infrastructure\" />
     <Folder Include="UserControls\" />
