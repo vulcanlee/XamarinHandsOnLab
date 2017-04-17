@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace XFTask.Models
 {
+    /// <summary>
+    /// 登入使用者的資料模型
+    /// </summary>
     public class Users
     {
         /// <summary>

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace XFTask.Models
 {
     /// <summary>
-    /// 指派的工作
+    /// 指派工作的資料模型
     /// </summary>
     public class UserTasks
     {
