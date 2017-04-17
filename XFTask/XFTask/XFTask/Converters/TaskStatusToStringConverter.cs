@@ -8,6 +8,9 @@ using Xamarin.Forms;
 
 namespace XFTask.Converters
 {
+    /// <summary>
+    /// 工作紀錄狀態列舉的數值轉換器，轉換成為中文說明文字
+    /// </summary>
     class TaskStatusToStringConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

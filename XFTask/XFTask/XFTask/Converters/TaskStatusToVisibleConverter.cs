@@ -8,6 +8,9 @@ using Xamarin.Forms;
 
 namespace XFTask.Converters
 {
+    /// <summary>
+    /// 工作紀錄狀態可見度數值轉換器，當工作紀錄狀態較低的時候，無法看到工作紀錄狀態較高的欄位資料
+    /// </summary>
     class TaskStatusToVisibleConverter : IValueConverter
     {
         /// <summary>

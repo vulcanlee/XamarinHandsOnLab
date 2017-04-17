@@ -12,6 +12,16 @@ namespace XamarinHandsOnLabService.Helpers
 {
     public static class QRHelper
     {
+        /// <summary>
+        /// 產生一個 QR Code 圖片
+        /// </summary>
+        /// <param name="html"></param>
+        /// <param name="url"></param>
+        /// <param name="alt"></param>
+        /// <param name="height"></param>
+        /// <param name="width"></param>
+        /// <param name="margin"></param>
+        /// <returns></returns>
         public static IHtmlString GenerateQrCode(this HtmlHelper html, string url, string alt = "QR code", int height = 200, int width = 200, int margin = 0)
         {
             var qrWriter = new BarcodeWriter();
