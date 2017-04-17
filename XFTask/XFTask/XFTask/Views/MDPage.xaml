@@ -97,6 +97,10 @@
                             Command="{Binding 管理者模式命令Command}"
                             IsVisible="{Binding 管理者模式}"/>
                         <Button
+                            Text="更新 App"
+                            Command="{Binding 更新AppCommand}"
+                            />
+                        <Button
                             Text="登出"
                             Command="{Binding 登出Command}"/>
                     </StackLayout>

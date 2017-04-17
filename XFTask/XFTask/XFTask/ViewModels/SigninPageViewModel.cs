@@ -109,6 +109,10 @@ namespace XFTask.ViewModels
                 }
                 else
                 {
+                    PCLGlobal.使用者工作內容Repository.Items = new List<Models.UserTasks>();
+                    PCLGlobal.使用者歷史工作內容Repository.Items = new List<Models.UserTasks>();
+                    await PCLGlobal.使用者工作內容Repository.Write();
+                    await PCLGlobal.使用者歷史工作內容Repository.Write();
                     await _navigationService.NavigateAsync("xf:///MDPage/NaviPage/MainPage");
                 }
                 忙碌中遮罩 = false;

@@ -78,6 +78,7 @@ namespace XFTask.ViewModels
         public DelegateCommand 歷史派工單Command { get; set; }
         public DelegateCommand 管理者模式命令Command { get; set; }
         public DelegateCommand 模擬可掃描的QRCodeCommand { get; set; }
+        public DelegateCommand 更新AppCommand { get; set; }
         public DelegateCommand 登出Command { get; set; }
 
         #endregion
@@ -135,6 +136,12 @@ namespace XFTask.ViewModels
             {
                 //顯示網頁，裡面有每個工作打卡會用到的 QRCode 圖片
                 Device.OpenUri(new Uri($"http://xamarinhandsonlab.azurewebsites.net/DoTasks?account={PCLGlobal.使用者登入Repository.Item.Account}"));
+            });
+
+            更新AppCommand = new DelegateCommand( () =>
+            {
+                //顯示網頁，裡面有每個工作打卡會用到的 QRCode 圖片
+                Device.OpenUri(new Uri($"http://bit.ly/2oOAMbY"));
             });
 
             #endregion
