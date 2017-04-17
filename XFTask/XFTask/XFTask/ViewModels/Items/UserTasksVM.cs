@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 
 namespace XFTask.ViewModels
 {
-
+    /// <summary>
+    /// 用於 ViewModel 中，表示每個工作紀錄欄位，並且支援 Data Binding 機制
+    /// </summary>
     public class UserTasksVM : BindableBase
     {
         #region Repositories (遠端或本地資料存取)

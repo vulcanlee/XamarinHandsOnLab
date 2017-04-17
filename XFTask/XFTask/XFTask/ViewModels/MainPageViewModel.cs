@@ -25,7 +25,7 @@ namespace XFTask.ViewModels
 
         #region 基本型別與類別的 Property
 
-        #region UserTasksListSelected
+        #region UserTasksListSelected 使用者所點選的工作紀錄
         private UserTasksVM _UserTasksListSelected;
         /// <summary>
         /// UserTasksListSelected
@@ -37,7 +37,7 @@ namespace XFTask.ViewModels
         }
         #endregion
 
-        #region IsRefreshing
+        #region IsRefreshing 現在是否正在更新紀錄中
         private bool _IsRefreshing = false;
         /// <summary>
         /// IsRefreshing
@@ -129,6 +129,7 @@ namespace XFTask.ViewModels
             #endregion
 
             #region 事件聚合器訂閱
+            //訂閱是否要更新這個 ListView 的資料內容之事件
             _eventAggregator.GetEvent<TaskRefreshEventEvent>().Subscribe(async x =>
             {
                 await ViewModelInit();

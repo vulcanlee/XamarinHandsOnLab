@@ -122,6 +122,10 @@ namespace XFTask.ViewModels
             await Task.Delay(100);
         }
 
+        /// <summary>
+        /// 將 API 的工作紀錄模型資料，更新到 ViewModel 使用的工作紀錄屬性物件上
+        /// </summary>
+        /// <param name="userTasks"></param>
         void UpdateCurrentUserTaskVM(UserTasks userTasks)
         {
             CurrentUserTasksVM.Id = userTasks.Id;

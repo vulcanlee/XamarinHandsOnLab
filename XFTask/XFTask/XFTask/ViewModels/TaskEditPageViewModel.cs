@@ -90,6 +90,7 @@ namespace XFTask.ViewModels
                 // 切換到條碼掃描頁面
                 await _navigationService.NavigateAsync("CodeScannerPage");
             });
+
             GPS打卡Command = new DelegateCommand(async () =>
             {
                 #region 使用 Geolocaor Plugin 取得當時手機所在的 GPS 位置座標
@@ -139,6 +140,7 @@ namespace XFTask.ViewModels
                 }
                 #endregion
             });
+
             工作資料儲存Command = new DelegateCommand(async () =>
             {
                 #region 儲存使用者輸入的資料
@@ -167,14 +169,17 @@ namespace XFTask.ViewModels
                 }
                 #endregion
             });
+
             直接拍照Command = new DelegateCommand(async () =>
             {
                 await 拍照與上傳("TakePhoto");
             });
+
             相片庫挑選Command = new DelegateCommand(async () =>
             {
                 await 拍照與上傳("PickPhoto");
             });
+
             工作回報Command = new DelegateCommand(async () =>
             {
                 #region 工作回報
@@ -207,11 +212,12 @@ namespace XFTask.ViewModels
             #endregion
 
             #region 事件聚合器訂閱
+            //訂閱當QR Code 頁面有掃描結果，就會呼叫這個訂閱的委派方法
             _eventAggregator.GetEvent<ScanResultEvent>().Subscribe(async x =>
             {
                 if (CurrentUserTasksVM.CheckinId == x.Result)
                 {
-                    #region 使用 QR Code 打卡
+                    #region 使用 QR Code 打卡 檢查所掃描的 QR Code 是否符合條件
                     try
                     {
                         var fooUserTasks = UpdateUserTasks(CurrentUserTasksVM).Clone();
@@ -300,6 +306,10 @@ namespace XFTask.ViewModels
             await Task.Delay(100);
         }
 
+        /// <summary>
+        /// 將 API 的工作紀錄模型資料，更新到 ViewModel 使用的工作紀錄屬性物件上
+        /// </summary>
+        /// <param name="userTasks"></param>
         void UpdateCurrentUserTaskVM(UserTasks userTasks)
         {
             CurrentUserTasksVM.Id = userTasks.Id;
@@ -323,7 +333,11 @@ namespace XFTask.ViewModels
             CurrentUserTasksVM.Title = userTasks.Title;
         }
 
-
+        /// <summary>
+        /// 將ViewModel 使用的工作紀錄屬性物件，更新到 API 的工作紀錄模型資料上
+        /// </summary>
+        /// <param name="userTaskVM"></param>
+        /// <returns></returns>
         UserTasks UpdateUserTasks(UserTasksVM userTaskVM)
         {
             var fooUserTasks = new UserTasks();
@@ -349,6 +363,11 @@ namespace XFTask.ViewModels
             return fooUserTasks;
         }
 
+        /// <summary>
+        /// 將圖片上傳到後端 Web API 主機上
+        /// </summary>
+        /// <param name="action"></param>
+        /// <returns></returns>
         public async Task 拍照與上傳(string action)
         {
             #region 拍照與上傳

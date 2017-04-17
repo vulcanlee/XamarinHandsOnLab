@@ -31,6 +31,12 @@ namespace XFTask.Repositories
         {
         }
 
+        /// <summary>
+        /// 使用者身分驗證：登入
+        /// </summary>
+        /// <param name="account"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         public async Task<APIResult> GetAsync(string account, string password)
         {
             using (HttpClientHandler handler = new HttpClientHandler())

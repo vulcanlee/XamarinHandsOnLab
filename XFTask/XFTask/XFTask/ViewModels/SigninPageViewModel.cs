@@ -101,7 +101,8 @@ namespace XFTask.ViewModels
             登入Command = new DelegateCommand(async () =>
             {
                 忙碌中遮罩 = true;
-               var fooResult = await PCLGlobal.使用者登入Repository.GetAsync(帳號, 密碼);
+                //使用者身分驗證：登入
+                var fooResult = await PCLGlobal.使用者登入Repository.GetAsync(帳號, 密碼);
                 if(fooResult.Success == false)
                 {
                     await _dialogService.DisplayAlertAsync("警告", fooResult.Message, "確定");

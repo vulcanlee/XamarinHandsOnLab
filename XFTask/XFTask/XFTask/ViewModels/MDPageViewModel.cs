@@ -105,27 +105,38 @@ namespace XFTask.ViewModels
             #region 頁面中綁定的命令
             尚未完成派工單Command = new DelegateCommand(async () =>
             {
+                // 這裡使用絕對 URI 的導航路徑
                 await _navigationService.NavigateAsync("xf:///MDPage/NaviPage/MainPage");
             });
+
             歷史派工單Command = new DelegateCommand(async () =>
             {
+                // 這裡使用絕對 URI 的導航路徑
                 await _navigationService.NavigateAsync("xf:///MDPage/NaviPage/TaskHistoryPage");
             });
+
             登出Command = new DelegateCommand(async () =>
             {
+                //切換到登出頁面，並且清空已經登入的使用者資訊
                 await PCLGlobal.使用者登入Repository.Read();
+                PCLGlobal.使用者登入Repository.Item = new Models.Users();
                 PCLGlobal.使用者登入Repository.Item.Account = "";
                 await PCLGlobal.使用者登入Repository.Write();
+                // 這裡使用絕對 URI 的導航路徑
                 await _navigationService.NavigateAsync("xf:///SigninPage");
             });
+
             管理者模式命令Command = new DelegateCommand(async () =>
             {
                 await _dialogService.DisplayAlertAsync("資訊", "你可以在此建置專屬管理者所需要的功能", "確定");
             });
+
             模擬可掃描的QRCodeCommand = new DelegateCommand( () =>
             {
+                //顯示網頁，裡面有每個工作打卡會用到的 QRCode 圖片
                 Device.OpenUri(new Uri($"http://xamarinhandsonlab.azurewebsites.net/DoTasks?account={PCLGlobal.使用者登入Repository.Item.Account}"));
             });
+
             #endregion
 
             #region 事件聚合器訂閱
