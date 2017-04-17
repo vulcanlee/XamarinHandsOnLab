@@ -40,4 +40,4 @@
 
 # Android APK 下載
 
-[http://bit.ly/2oOAMbY](http://bit.ly/2oOAMbY)
+[http://bit.ly/2nUjgUq](http://bit.ly/2nUjgUq)

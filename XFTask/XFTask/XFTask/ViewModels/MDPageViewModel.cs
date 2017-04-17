@@ -141,7 +141,7 @@ namespace XFTask.ViewModels
             更新AppCommand = new DelegateCommand( () =>
             {
                 //顯示網頁，裡面有每個工作打卡會用到的 QRCode 圖片
-                Device.OpenUri(new Uri($"http://bit.ly/2oOAMbY"));
+                Device.OpenUri(new Uri($"http://bit.ly/2nUjgUq"));
             });
 
             #endregion
