@@ -12,6 +12,7 @@ using Plugin.Permissions;
 using ImageCircle.Forms.Plugin.Droid;
 using Gcm.Client;
 using XFTask.Droid.Infrastructure;
+using Acr.UserDialogs;
 
 [assembly: UsesFeature("android.hardware.location", Required = false)]
 [assembly: UsesFeature("android.hardware.location.gps", Required = false)]
@@ -62,6 +63,7 @@ namespace XFTask.Droid
             #region 第三方套件／插件的初始化
             ZXing.Net.Mobile.Forms.Android.Platform.Init();
             var rendererAssemblies = new[] { typeof(ImageCircleRenderer) };
+            UserDialogs.Init(this);
             #endregion
 
             #region 進行 Azure Mobile Client 套件初始化
