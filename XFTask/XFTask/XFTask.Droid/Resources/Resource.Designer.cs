@@ -29,6 +29,7 @@ namespace XFTask.Droid
 			global::Gcm.Client.Resource.String.library_name = global::XFTask.Droid.Resource.String.library_name;
 			global::PCLStorage.Resource.String.ApplicationName = global::XFTask.Droid.Resource.String.ApplicationName;
 			global::PCLStorage.Resource.String.Hello = global::XFTask.Droid.Resource.String.Hello;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::XFTask.Droid.Resource.Attribute.actionBarSize;
 			global::ZXing.Net.Mobile.Forms.Android.Resource.Layout.zxingscanneractivitylayout = global::XFTask.Droid.Resource.Layout.zxingscanneractivitylayout;
 			global::ZXing.Net.Mobile.Forms.Android.Resource.Layout.zxingscannerfragmentlayout = global::XFTask.Droid.Resource.Layout.zxingscannerfragmentlayout;
 			global::ZXing.Net.Mobile.Forms.Android.Resource.String.library_name = global::XFTask.Droid.Resource.String.library_name;
