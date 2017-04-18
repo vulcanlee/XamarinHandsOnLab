@@ -10,8 +10,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
@@ -21,30 +19,27 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>MinimumOSVersion</key>
-	<string>6.0</string>
+	<string>10.3</string>
 	<key>CFBundleDisplayName</key>
-	<string>XFTask</string>
+	<string>派工與回報</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.yourcompany.XFTask</string>
+	<string>com.vulcanlab.task</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>CFBundleIconFiles</key>
 	<array>
-		<string>Icon-60@2x</string>
-		<string>Icon-60@3x</string>
-		<string>Icon-76</string>
-		<string>Icon-76@2x</string>
-		<string>Default</string>
-		<string>Default@2x</string>
-		<string>Default-568h@2x</string>
-		<string>Default-Portrait</string>
-		<string>Default-Portrait@2x</string>
-		<string>Icon-Small-40</string>
-		<string>Icon-Small-40@2x</string>
-		<string>Icon-Small-40@3x</string>
-		<string>Icon-Small</string>
-		<string>Icon-Small@2x</string>
-		<string>Icon-Small@3x</string>
+		<string>Icon-60@2x.png</string>
+		<string>Icon-76.png</string>
+		<string>Icon-76@2x.png</string>
+		<string>Default.png</string>
+		<string>Default@2x.png</string>
+		<string>Default-568h@2x.png</string>
+		<string>Default-Portrait.png</string>
+		<string>Default-Portrait@2x.png</string>
+		<string>Icon-Small-40.png</string>
+		<string>Icon-Small-40@2x.png</string>
+		<string>Icon-Small.png</string>
+		<string>Icon-Small@2x.png</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
@@ -58,5 +53,7 @@
 	<string>New Entry</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>New Entry</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1</string>
 </dict>
 </plist>

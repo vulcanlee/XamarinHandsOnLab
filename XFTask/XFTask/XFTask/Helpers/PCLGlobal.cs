@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.WindowsAzure.MobileServices;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -47,6 +48,17 @@ namespace XFTask.Helpers
         public static 使用者登入Repository 使用者登入Repository = new 使用者登入Repository();
         public static 使用者工作內容Repository 使用者工作內容Repository = new 使用者工作內容Repository();
         public static 使用者歷史工作內容Repository 使用者歷史工作內容Repository = new 使用者歷史工作內容Repository();
+        #endregion
+
+        #region Azure Mobile App 相關設定
+        /// <summary>
+        /// 指向 Azure Mobile App 服務的主要網址
+        /// </summary>
+        public static string MainURL = "https://xamarinhandsonlab.azurewebsites.net";
+        /// <summary>
+        /// Azure Mobile App 線上版本的用戶端
+        /// </summary>
+        public static MobileServiceClient AzureMobileClient = new MobileServiceClient(MainURL);
         #endregion
     }
 }
