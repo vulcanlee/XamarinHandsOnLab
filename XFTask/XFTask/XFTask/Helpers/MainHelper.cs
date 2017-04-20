@@ -1,6 +1,7 @@
 ﻿using Microsoft.WindowsAzure.MobileServices;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,10 +9,7 @@ using XFTask.Repositories;
 
 namespace XFTask.Helpers
 {
-    /// <summary>
-    /// 這是整個應用程式都可以存取的一個支援類別屬性與方法
-    /// </summary>
-    public class PCLGlobal
+    class MainHelper
     {
         #region 常用的變數 Constant
         /// <summary>
@@ -41,13 +39,12 @@ namespace XFTask.Helpers
         public static string UploadImageAPIName = $"UploadImage";
         public static string UploadImageAPIUrl = $"{BaseAPIUrl}{UploadImageAPIName}";
         public static string 資料主目錄 = $"Data";
-
         #endregion
 
         #region Repository (此處為方便開發，所以，所有的 Repository 皆為全域靜態可存取
-        public static 使用者登入Repository 使用者登入Repository = new 使用者登入Repository();
-        public static 使用者工作內容Repository 使用者工作內容Repository = new 使用者工作內容Repository();
-        public static 使用者歷史工作內容Repository 使用者歷史工作內容Repository = new 使用者歷史工作內容Repository();
+        public static 使用者登入Repository foo使用者登入Repository { get; set; }
+        public static 使用者工作內容Repository foo使用者工作內容Repository { get; set; }
+        public static 使用者歷史工作內容Repository foo使用者歷史工作內容Repository { get; set; }
         #endregion
 
         #region Azure Mobile App 相關設定
@@ -58,7 +55,21 @@ namespace XFTask.Helpers
         /// <summary>
         /// Azure Mobile App 線上版本的用戶端
         /// </summary>
-        public static MobileServiceClient AzureMobileClient = new MobileServiceClient(MainURL);
+        public static MobileServiceClient AzureMobileClient;
+        #endregion
+
+        #region Constructor
+        public static void Init()
+        {
+            try
+            {
+                AzureMobileClient = new MobileServiceClient(MainURL);
+            }
+            catch(Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+        }
         #endregion
     }
 }

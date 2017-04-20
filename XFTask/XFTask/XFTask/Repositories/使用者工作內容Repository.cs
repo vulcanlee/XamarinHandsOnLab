@@ -47,7 +47,7 @@ namespace XFTask.Repositories
                     {
                         #region 呼叫遠端 Web API
                         // http://xamarinhandsonlab.azurewebsites.net/api/UserTasks?account=user1
-                        string FooUrl = $"{PCLGlobal.UserTasksAPIUrl}";
+                        string FooUrl = $"{PCLGlobalHelper.UserTasksAPIUrl}";
                         HttpResponseMessage response = null;
 
                         client.DefaultRequestHeaders.Add("ZUMO-API-VERSION", "2.0.0");
@@ -161,7 +161,7 @@ namespace XFTask.Repositories
                     {
                         #region 呼叫遠端 Web API
                         // http://xamarinhandsonlab.azurewebsites.net/api/UserTasks
-                        string FooUrl = $"{PCLGlobal.UserTasksAPIUrl}";
+                        string FooUrl = $"{PCLGlobalHelper.UserTasksAPIUrl}";
                         HttpResponseMessage response = null;
 
                         client.DefaultRequestHeaders.Add("ZUMO-API-VERSION", "2.0.0");
@@ -243,7 +243,7 @@ namespace XFTask.Repositories
                     {
                         #region 呼叫遠端 Web API
                         // http://xamarinhandsonlab.azurewebsites.net/api/UploadImage
-                        string FooUrl = $"{PCLGlobal.UploadImageAPIUrl}";
+                        string FooUrl = $"{PCLGlobalHelper.UploadImageAPIUrl}";
                         HttpResponseMessage response = null;
 
                         client.DefaultRequestHeaders.Add("ZUMO-API-VERSION", "2.0.0");
@@ -335,7 +335,7 @@ namespace XFTask.Repositories
         public async Task Write()
         {
             string data = JsonConvert.SerializeObject(Items);
-            await StorageUtility.WriteToDataFileAsync("", PCLGlobal.資料主目錄, PCLGlobal.UserTasksAPIName, data);
+            await StorageUtility.WriteToDataFileAsync("", PCLGlobalHelper.資料主目錄, PCLGlobalHelper.UserTasksAPIName, data);
         }
 
         /// <summary>
@@ -345,7 +345,7 @@ namespace XFTask.Repositories
         public async Task<List<UserTasks>> Read()
         {
             string data = "";
-            data = await StorageUtility.ReadFromDataFileAsync("", PCLGlobal.資料主目錄, PCLGlobal.UserTasksAPIName);
+            data = await StorageUtility.ReadFromDataFileAsync("", PCLGlobalHelper.資料主目錄, PCLGlobalHelper.UserTasksAPIName);
             Items = JsonConvert.DeserializeObject<List<UserTasks>>(data);
             if (Items == null)
             {

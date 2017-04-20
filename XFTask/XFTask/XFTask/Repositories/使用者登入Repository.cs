@@ -47,7 +47,7 @@ namespace XFTask.Repositories
                     {
                         #region 呼叫遠端 Web API
                         // http://xamarinhandsonlab.azurewebsites.net/api/UserLogin?account=user1&password=pw1
-                        string FooUrl = $"{PCLGlobal.UserLoginAPIUrl}";
+                        string FooUrl = $"{PCLGlobalHelper.UserLoginAPIUrl}";
                         HttpResponseMessage response = null;
 
                         client.DefaultRequestHeaders.Add("ZUMO-API-VERSION", "2.0.0");
@@ -153,7 +153,7 @@ namespace XFTask.Repositories
         public async Task Write()
         {
             string data = JsonConvert.SerializeObject(Item);
-            await StorageUtility.WriteToDataFileAsync("", PCLGlobal.資料主目錄, PCLGlobal.UserLoginAPIName, data);
+            await StorageUtility.WriteToDataFileAsync("", PCLGlobalHelper.資料主目錄, PCLGlobalHelper.UserLoginAPIName, data);
         }
 
         /// <summary>
@@ -163,7 +163,7 @@ namespace XFTask.Repositories
         public async Task<Users> Read()
         {
             string data = "";
-            data = await StorageUtility.ReadFromDataFileAsync("", PCLGlobal.資料主目錄, PCLGlobal.UserLoginAPIName);
+            data = await StorageUtility.ReadFromDataFileAsync("", PCLGlobalHelper.資料主目錄, PCLGlobalHelper.UserLoginAPIName);
             Item = JsonConvert.DeserializeObject<Users>(data);
             if (Item == null)
             {

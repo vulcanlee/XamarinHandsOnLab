@@ -15,6 +15,7 @@ namespace XFTask
 
             //NavigationService.NavigateAsync("NavigationPage/MainPage?title=Hello%20from%20Xamarin.Forms");
             NavigationService.NavigateAsync("SigninPage");
+            //NavigationService.NavigateAsync("SamplePage");
         }
 
         protected override void RegisterTypes()
@@ -28,6 +29,8 @@ namespace XFTask
             Container.RegisterTypeForNavigation<CodeScannerPage>();
             Container.RegisterTypeForNavigation<TaskHistoryPage>();
             Container.RegisterTypeForNavigation<TaskHistoryDetailPage>();
+            Container.RegisterTypeForNavigation<SamplePage>();
+            Container.RegisterTypeForNavigation<SamplePage>();
         }
     }
 }

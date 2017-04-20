@@ -101,13 +101,13 @@ namespace XFTask.ViewModels
             #region 頁面中綁定的命令
             DoRefreshCommand = new DelegateCommand(async () =>
             {
-                fooAPIResult = await PCLGlobal.使用者歷史工作內容Repository.GetDateRangeAsync(
-                    PCLGlobal.使用者登入Repository.Item.Account, DateTime.Now.AddDays(-7), DateTime.Now);
+                fooAPIResult = await PCLGlobalHelper.foo使用者歷史工作內容Repository.GetDateRangeAsync(
+                    PCLGlobalHelper.foo使用者登入Repository.Item.Account, DateTime.Now.AddDays(-7), DateTime.Now);
 
                 if (fooAPIResult.Success == true)
                 {
                     UserTasksList.Clear();
-                    foreach (var item in PCLGlobal.使用者歷史工作內容Repository.Items)
+                    foreach (var item in PCLGlobalHelper.foo使用者歷史工作內容Repository.Items)
                     {
                         AddViewModel(item);
                     }
@@ -166,7 +166,7 @@ namespace XFTask.ViewModels
         /// <returns></returns>
         private async Task ViewModelInit()
         {
-            var fooItems = await PCLGlobal.使用者歷史工作內容Repository.Read();
+            var fooItems = await PCLGlobalHelper.foo使用者歷史工作內容Repository.Read();
             UserTasksList.Clear();
             foreach (var item in fooItems)
             {

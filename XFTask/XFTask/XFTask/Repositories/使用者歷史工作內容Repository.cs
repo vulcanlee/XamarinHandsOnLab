@@ -49,7 +49,7 @@ namespace XFTask.Repositories
                     {
                         #region 呼叫遠端 Web API
                         //http://xamarinhandsonlab.azurewebsites.net/api/UserTasks/Filter?account=user1&lastDate=2017/04/15&startDate=2017/04/15
-                        string FooUrl = $"{PCLGlobal.UserTasksHistoryAPIUrl}";
+                        string FooUrl = $"{PCLGlobalHelper.UserTasksHistoryAPIUrl}";
                         HttpResponseMessage response = null;
 
                         client.DefaultRequestHeaders.Add("ZUMO-API-VERSION", "2.0.0");
@@ -152,7 +152,7 @@ namespace XFTask.Repositories
         public async Task Write()
         {
             string data = JsonConvert.SerializeObject(Items);
-            await StorageUtility.WriteToDataFileAsync("", PCLGlobal.資料主目錄, PCLGlobal.UserTasksHistoryAPIName, data);
+            await StorageUtility.WriteToDataFileAsync("", PCLGlobalHelper.資料主目錄, PCLGlobalHelper.UserTasksHistoryAPIName, data);
         }
 
         /// <summary>
@@ -162,7 +162,7 @@ namespace XFTask.Repositories
         public async Task<List<UserTasks>> Read()
         {
             string data = "";
-            data = await StorageUtility.ReadFromDataFileAsync("", PCLGlobal.資料主目錄, PCLGlobal.UserTasksHistoryAPIName);
+            data = await StorageUtility.ReadFromDataFileAsync("", PCLGlobalHelper.資料主目錄, PCLGlobalHelper.UserTasksHistoryAPIName);
             Items = JsonConvert.DeserializeObject<List<UserTasks>>(data);
             if (Items == null)
             {

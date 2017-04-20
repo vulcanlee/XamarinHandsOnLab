@@ -51,7 +51,7 @@ namespace XFTask.Droid.Infrastructure
 
             #region 進行 Azure Mobile 服務註冊
             // 取得 Azure Mobile Client 物件
-            var push = PCLGlobal.AzureMobileClient.GetPush();
+            var push = PCLGlobalHelper.AzureMobileClient.GetPush();
 
             // 使用主執行續，進行 Azure Mobile 註冊
             MainActivity.CurrentActivity.RunOnUiThread(() => Register(push, null));

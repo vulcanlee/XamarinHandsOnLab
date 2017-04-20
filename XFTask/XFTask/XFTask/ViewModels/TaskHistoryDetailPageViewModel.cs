@@ -114,7 +114,7 @@ namespace XFTask.ViewModels
         /// <returns></returns>
         private async Task ViewModelInit()
         {
-            var fooItem = PCLGlobal.使用者歷史工作內容Repository.Items.FirstOrDefault(x => x.Id == Id);
+            var fooItem = PCLGlobalHelper.foo使用者歷史工作內容Repository.Items.FirstOrDefault(x => x.Id == Id);
             if (fooItem != null)
             {
                 UpdateCurrentUserTaskVM(fooItem);

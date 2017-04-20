@@ -53,7 +53,6 @@ namespace XFTask.Views
                 });
                 // 回到上一頁
                 await foo本頁面的檢視模型._navigationService.GoBackAsync();
-
             });
             #endregion
      

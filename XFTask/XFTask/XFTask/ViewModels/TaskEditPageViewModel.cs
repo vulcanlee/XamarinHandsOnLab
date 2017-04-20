@@ -120,13 +120,13 @@ namespace XFTask.ViewModels
                     fooUserTasks.Status = Models.TaskStatus.CHECKIN;
                     using (UserDialogs.Instance.Loading($"請稍後，回報GPS打卡資訊...", null, null, true, MaskType.Black))
                     {
-                        fooAPIResult = await PCLGlobal.使用者工作內容Repository.PutAsync(fooUserTasks);
+                        fooAPIResult = await PCLGlobalHelper.foo使用者工作內容Repository.PutAsync(fooUserTasks);
                     }
                     if (fooAPIResult.Success == true)
                     {
                         using (UserDialogs.Instance.Loading($"請稍後，取得該使用者的派工資料中...", null, null, true, MaskType.Black))
                         {
-                            fooAPIResult = await PCLGlobal.使用者工作內容Repository.GetDateRangeAsync(CurrentUserTasksVM.Account);
+                            fooAPIResult = await PCLGlobalHelper.foo使用者工作內容Repository.GetDateRangeAsync(CurrentUserTasksVM.Account);
                         }
                         if (fooAPIResult.Success == true)
                         {
@@ -160,13 +160,13 @@ namespace XFTask.ViewModels
                 fooUserTasks.Status = Models.TaskStatus.INPUT;
                 using (UserDialogs.Instance.Loading($"請稍後，回報輸入工作內容...", null, null, true, MaskType.Black))
                 {
-                    fooAPIResult = await PCLGlobal.使用者工作內容Repository.PutAsync(fooUserTasks);
+                    fooAPIResult = await PCLGlobalHelper.foo使用者工作內容Repository.PutAsync(fooUserTasks);
                 }
                 if (fooAPIResult.Success == true)
                 {
                     using (UserDialogs.Instance.Loading($"請稍後，取得該使用者的派工資料中...", null, null, true, MaskType.Black))
                     {
-                        fooAPIResult = await PCLGlobal.使用者工作內容Repository.GetDateRangeAsync(CurrentUserTasksVM.Account);
+                        fooAPIResult = await PCLGlobalHelper.foo使用者工作內容Repository.GetDateRangeAsync(CurrentUserTasksVM.Account);
                     }
                     if (fooAPIResult.Success == true)
                     {
@@ -205,13 +205,13 @@ namespace XFTask.ViewModels
                 fooUserTasks.Status = Models.TaskStatus.REPORTED;
                 using (UserDialogs.Instance.Loading($"請稍後，回報工作已完成...", null, null, true, MaskType.Black))
                 {
-                    fooAPIResult = await PCLGlobal.使用者工作內容Repository.PutAsync(fooUserTasks);
+                    fooAPIResult = await PCLGlobalHelper.foo使用者工作內容Repository.PutAsync(fooUserTasks);
                 }
                 if (fooAPIResult.Success == true)
                 {
                     using (UserDialogs.Instance.Loading($"請稍後，取得該使用者的派工資料中...", null, null, true, MaskType.Black))
                     {
-                        fooAPIResult = await PCLGlobal.使用者工作內容Repository.GetDateRangeAsync(CurrentUserTasksVM.Account);
+                        fooAPIResult = await PCLGlobalHelper.foo使用者工作內容Repository.GetDateRangeAsync(CurrentUserTasksVM.Account);
                     }
                     if (fooAPIResult.Success == true)
                     {
@@ -248,13 +248,13 @@ namespace XFTask.ViewModels
                         fooUserTasks.Status = Models.TaskStatus.CHECKIN;
                         using (UserDialogs.Instance.Loading($"請稍後，回報QR Code 打卡工作內容...", null, null, true, MaskType.Black))
                         {
-                            fooAPIResult = await PCLGlobal.使用者工作內容Repository.PutAsync(fooUserTasks);
+                            fooAPIResult = await PCLGlobalHelper.foo使用者工作內容Repository.PutAsync(fooUserTasks);
                         }
                         if (fooAPIResult.Success == true)
                         {
                             using (UserDialogs.Instance.Loading($"請稍後，取得該使用者的派工資料中...", null, null, true, MaskType.Black))
                             {
-                                fooAPIResult = await PCLGlobal.使用者工作內容Repository.GetDateRangeAsync(CurrentUserTasksVM.Account);
+                                fooAPIResult = await PCLGlobalHelper.foo使用者工作內容Repository.GetDateRangeAsync(CurrentUserTasksVM.Account);
                             }
                             if (fooAPIResult.Success == true)
                             {
@@ -328,7 +328,7 @@ namespace XFTask.ViewModels
         /// <returns></returns>
         private async Task ViewModelInit()
         {
-            var fooItem = PCLGlobal.使用者工作內容Repository.Items.FirstOrDefault(x => x.Id == Id);
+            var fooItem = PCLGlobalHelper.foo使用者工作內容Repository.Items.FirstOrDefault(x => x.Id == Id);
             if (fooItem != null)
             {
                 UpdateCurrentUserTaskVM(fooItem);
@@ -452,7 +452,7 @@ namespace XFTask.ViewModels
 
             using (UserDialogs.Instance.Loading($"請稍後，上傳照片中...", null, null, true, MaskType.Black))
             {
-                fooAPIResult = await PCLGlobal.使用者工作內容Repository.UploadImageAsync(file);
+                fooAPIResult = await PCLGlobalHelper.foo使用者工作內容Repository.UploadImageAsync(file);
             }
             if (fooAPIResult.Success == true)
             {
@@ -461,13 +461,13 @@ namespace XFTask.ViewModels
                 fooUserTasks.PhotoURL = fooAPIResult.Payload as string;
                 using (UserDialogs.Instance.Loading($"請稍後，更新工作內容中...", null, null, true, MaskType.Black))
                 {
-                    fooAPIResult = await PCLGlobal.使用者工作內容Repository.PutAsync(fooUserTasks);
+                    fooAPIResult = await PCLGlobalHelper.foo使用者工作內容Repository.PutAsync(fooUserTasks);
                 }
                 if (fooAPIResult.Success == true)
                 {
                     using (UserDialogs.Instance.Loading($"請稍後，取得該使用者的派工資料中...", null, null, true, MaskType.Black))
                     {
-                        fooAPIResult = await PCLGlobal.使用者工作內容Repository.GetDateRangeAsync(CurrentUserTasksVM.Account);
+                        fooAPIResult = await PCLGlobalHelper.foo使用者工作內容Repository.GetDateRangeAsync(CurrentUserTasksVM.Account);
                     }
 
                     if (fooAPIResult.Success == true)

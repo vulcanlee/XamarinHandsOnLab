@@ -7,6 +7,7 @@ using UIKit;
 using Prism.Unity;
 using Microsoft.Practices.Unity;
 using ImageCircle.Forms.Plugin.iOS;
+using XFTask.Helpers;
 
 namespace XFTask.iOS
 {
@@ -25,13 +26,18 @@ namespace XFTask.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            global::Xamarin.Forms.Forms.Init();
-            LoadApplication(new App(new iOSInitializer()));
-
             #region 第三方套件／插件的初始化
             ZXing.Net.Mobile.Forms.iOS.Platform.Init();
+            // Initialize the Azure Mobile Client SDK
+            // http://stackoverflow.com/questions/24521355/azure-mobile-services-invalid-operation-exception-platform-specific-assembly-n
+            Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
             var rendererAssemblies = new[] { typeof(ImageCircleRenderer) };
+
+            //Console.WriteLine(PCLGlobalHelper.BaseAPIUrl);
             #endregion
+
+            global::Xamarin.Forms.Forms.Init();
+            LoadApplication(new App(new iOSInitializer()));
 
             return base.FinishedLaunching(app, options);
         }

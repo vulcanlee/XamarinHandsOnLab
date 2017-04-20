@@ -119,10 +119,10 @@ namespace XFTask.ViewModels
             登出Command = new DelegateCommand(async () =>
             {
                 //切換到登出頁面，並且清空已經登入的使用者資訊
-                await PCLGlobal.使用者登入Repository.Read();
-                PCLGlobal.使用者登入Repository.Item = new Models.Users();
-                PCLGlobal.使用者登入Repository.Item.Account = "";
-                await PCLGlobal.使用者登入Repository.Write();
+                await PCLGlobalHelper.foo使用者登入Repository.Read();
+                PCLGlobalHelper.foo使用者登入Repository.Item = new Models.Users();
+                PCLGlobalHelper.foo使用者登入Repository.Item.Account = "";
+                await PCLGlobalHelper.foo使用者登入Repository.Write();
                 // 這裡使用絕對 URI 的導航路徑
                 await _navigationService.NavigateAsync("xf:///SigninPage");
             });
@@ -135,7 +135,7 @@ namespace XFTask.ViewModels
             模擬可掃描的QRCodeCommand = new DelegateCommand( () =>
             {
                 //顯示網頁，裡面有每個工作打卡會用到的 QRCode 圖片
-                Device.OpenUri(new Uri($"http://xamarinhandsonlab.azurewebsites.net/DoTasks?account={PCLGlobal.使用者登入Repository.Item.Account}"));
+                Device.OpenUri(new Uri($"http://xamarinhandsonlab.azurewebsites.net/DoTasks?account={PCLGlobalHelper.foo使用者登入Repository.Item.Account}"));
             });
 
             更新AppCommand = new DelegateCommand( () =>
@@ -187,12 +187,12 @@ namespace XFTask.ViewModels
         /// <returns></returns>
         private async Task ViewModelInit()
         {
-            if (string.IsNullOrEmpty(PCLGlobal.使用者登入Repository.Item.PhotoUrl) == false)
+            if (string.IsNullOrEmpty(PCLGlobalHelper.foo使用者登入Repository.Item.PhotoUrl) == false)
             {
-                UserPhoto = PCLGlobal.使用者登入Repository.Item.PhotoUrl;
+                UserPhoto = PCLGlobalHelper.foo使用者登入Repository.Item.PhotoUrl;
             }
-            UserName = PCLGlobal.使用者登入Repository.Item.Name;
-            if(PCLGlobal.使用者登入Repository.Item.Account.ToLower() == "admin")
+            UserName = PCLGlobalHelper.foo使用者登入Repository.Item.Name;
+            if(PCLGlobalHelper.foo使用者登入Repository.Item.Account.ToLower() == "admin")
             {
                 管理者模式 = true;
             }

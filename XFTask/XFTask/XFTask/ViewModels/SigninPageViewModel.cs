@@ -5,9 +5,11 @@ using Prism.Navigation;
 using Prism.Services;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using XFTask.Helpers;
+using XFTask.Repositories;
 
 namespace XFTask.ViewModels
 {
@@ -47,7 +49,7 @@ namespace XFTask.ViewModels
         #endregion
 
         #region 忙碌中遮罩
-        private bool _忙碌中遮罩=false;
+        private bool _忙碌中遮罩 = false;
         /// <summary>
         /// 忙碌中遮罩
         /// </summary>
@@ -102,17 +104,17 @@ namespace XFTask.ViewModels
             {
                 忙碌中遮罩 = true;
                 //使用者身分驗證：登入
-                var fooResult = await PCLGlobal.使用者登入Repository.GetAsync(帳號, 密碼);
-                if(fooResult.Success == false)
+                var fooResult = await PCLGlobalHelper.foo使用者登入Repository.GetAsync(帳號, 密碼);
+                if (fooResult.Success == false)
                 {
                     await _dialogService.DisplayAlertAsync("警告", fooResult.Message, "確定");
                 }
                 else
                 {
-                    PCLGlobal.使用者工作內容Repository.Items = new List<Models.UserTasks>();
-                    PCLGlobal.使用者歷史工作內容Repository.Items = new List<Models.UserTasks>();
-                    await PCLGlobal.使用者工作內容Repository.Write();
-                    await PCLGlobal.使用者歷史工作內容Repository.Write();
+                    PCLGlobalHelper.foo使用者工作內容Repository.Items = new List<Models.UserTasks>();
+                    PCLGlobalHelper.foo使用者歷史工作內容Repository.Items = new List<Models.UserTasks>();
+                    await PCLGlobalHelper.foo使用者工作內容Repository.Write();
+                    await PCLGlobalHelper.foo使用者歷史工作內容Repository.Write();
                     await _navigationService.NavigateAsync("xf:///MDPage/NaviPage/MainPage");
                 }
                 忙碌中遮罩 = false;
@@ -134,16 +136,32 @@ namespace XFTask.ViewModels
 
         public async void OnNavigatingTo(NavigationParameters parameters)
         {
-            await PCLGlobal.使用者登入Repository.Read();
-            if (string.IsNullOrEmpty(PCLGlobal.使用者登入Repository.Item.Account)==false)
-            {
-                await _navigationService.NavigateAsync("xf:///MDPage/NaviPage/MainPage");
-            }
         }
 
         public async void OnNavigatedTo(NavigationParameters parameters)
         {
             await ViewModelInit();
+            //PCLGlobalHelper.Init();
+            //var foo1 = new 使用者登入Repository();
+            //var foostr = MainHelper.BaseUrl;
+
+
+            //PCLGlobal.foo使用者登入Repository = new 使用者登入Repository();
+
+            try
+            {
+                var fooIt = 0;
+                await PCLGlobalHelper.foo使用者登入Repository.Read();
+                if (string.IsNullOrEmpty(PCLGlobalHelper.foo使用者登入Repository.Item.Account) == false)
+                {
+                    await _navigationService.NavigateAsync("xf:///MDPage/NaviPage/MainPage");
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+
         }
         #endregion
 

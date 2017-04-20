@@ -22,7 +22,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;TESTING</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -37,7 +37,8 @@
   <ItemGroup>
     <Compile Include="Converters\TaskStatusToVisibleConverter.cs" />
     <Compile Include="Converters\TaskStatusToStringConverter.cs" />
-    <Compile Include="Helpers\PCLGlobal.cs" />
+    <Compile Include="Helpers\MainHelper.cs" />
+    <Compile Include="Helpers\PCLGlobalHelper.cs" />
     <Compile Include="Helpers\StorageUtility.cs" />
     <Compile Include="Models\APIResult.cs" />
     <Compile Include="Models\NotificationPayload.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\MDPageViewModel.cs" />
     <Compile Include="ViewModels\NaviPageViewModel.cs" />
+    <Compile Include="ViewModels\SamplePageViewModel.cs" />
     <Compile Include="ViewModels\SigninPageViewModel.cs" />
     <Compile Include="ViewModels\TaskEditPageViewModel.cs" />
     <Compile Include="ViewModels\TaskHistoryDetailPageViewModel.cs" />
@@ -66,6 +68,9 @@
     </Compile>
     <Compile Include="Views\NaviPage.xaml.cs">
       <DependentUpon>NaviPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SamplePage.xaml.cs">
+      <DependentUpon>SamplePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SigninPage.xaml.cs">
       <DependentUpon>SigninPage.xaml</DependentUpon>
@@ -256,6 +261,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\TaskHistoryDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\SamplePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
