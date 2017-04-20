@@ -67,7 +67,7 @@
     <CodesignKey>iPhone Developer: 進興 李 (K96KF78YD3)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignProvision>0eb246b0-6c47-411b-b5d4-451867197ebc</CodesignProvision>
+    <CodesignProvision>b7487b95-3ce7-4d7d-ad9c-2af7a882b4cc</CodesignProvision>
     <BuildIpa>True</BuildIpa>
     <IpaIncludeArtwork>False</IpaIncludeArtwork>
   </PropertyGroup>
