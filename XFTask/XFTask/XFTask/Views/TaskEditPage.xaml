@@ -185,6 +185,7 @@
                         TextColor="White"/>
                     <Entry
                         Text="{Binding CurrentUserTasksVM.Condition1_Result}"
+                        TextColor="White"
                         HorizontalOptions="Fill" VerticalOptions="Start" />
                     <Label 
                         Margin="0,10,0,0"
@@ -193,6 +194,7 @@
                         TextColor="White"/>
                     <Entry
                         Text="{Binding CurrentUserTasksVM.Condition2_Result}"
+                        TextColor="White"
                         HorizontalOptions="Fill" VerticalOptions="Start" />
                     <Label 
                         Margin="0,10,0,0"
@@ -201,6 +203,7 @@
                         TextColor="White"/>
                     <Entry
                         Text="{Binding CurrentUserTasksVM.Condition3_Result}"
+                        TextColor="White"
                         HorizontalOptions="Fill" VerticalOptions="Start" />
 
                     <Button

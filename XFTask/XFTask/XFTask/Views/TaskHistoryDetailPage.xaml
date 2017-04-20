@@ -163,7 +163,8 @@
                         TextColor="White"/>
                     <Label
                         Text="{Binding CurrentUserTasksVM.Condition1_Result}"
-                        HorizontalOptions="Fill" VerticalOptions="Start" />
+                        HorizontalOptions="Fill" VerticalOptions="Start"
+                        TextColor="White" />
                     <Label 
                         Margin="0,10,0,0"
                         Text="{Binding CurrentUserTasksVM.Condition2_Ttile}"
@@ -171,7 +172,8 @@
                         TextColor="White"/>
                     <Label
                         Text="{Binding CurrentUserTasksVM.Condition2_Result}"
-                        HorizontalOptions="Fill" VerticalOptions="Start" />
+                        HorizontalOptions="Fill" VerticalOptions="Start" 
+                        TextColor="White"/>
                     <Label 
                         Margin="0,10,0,0"
                         Text="{Binding CurrentUserTasksVM.Condition3_Ttile}"
@@ -179,7 +181,8 @@
                         TextColor="White"/>
                     <Label
                         Text="{Binding CurrentUserTasksVM.Condition3_Result}"
-                        HorizontalOptions="Fill" VerticalOptions="Start" />
+                        HorizontalOptions="Fill" VerticalOptions="Start"
+                        TextColor="White" />
                 </StackLayout>
             </Grid>
 
