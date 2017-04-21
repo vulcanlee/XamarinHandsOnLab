@@ -84,7 +84,7 @@
     <BuildIpa>True</BuildIpa>
     <IpaIncludeArtwork>False</IpaIncludeArtwork>
     <MtouchDebug>False</MtouchDebug>
-    <CodesignProvision>1b818d96-9d23-4851-9ffb-33675effb63e</CodesignProvision>
+    <CodesignProvision>84f116a7-9db6-4345-991a-f4cc4cd6ba04</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
     <DebugType>none</DebugType>
