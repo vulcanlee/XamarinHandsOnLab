@@ -165,6 +165,23 @@
 						"description": ""
 					},
 					"response": []
+				},
+				{
+					"name": "預設 Todo 資料表的查詢",
+					"request": {
+						"url": "http://xamarinhandsonlab.azurewebsites.net/tables/todoitem",
+						"method": "GET",
+						"header": [
+							{
+								"key": "ZUMO-API-VERSION",
+								"value": "2.0.0",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "預設 Todo 資料表的查詢"
+					},
+					"response": []
 				}
 			]
 		},
