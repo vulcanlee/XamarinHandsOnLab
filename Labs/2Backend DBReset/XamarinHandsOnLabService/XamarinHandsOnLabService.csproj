@@ -146,9 +146,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\Startup.MobileApp.cs" />
+    <Compile Include="Controllers\DBResetController.cs" />
     <Compile Include="Controllers\TodoItemController.cs" />
+    <Compile Include="Controllers\UserLoginController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="DataObjects\TodoItem.cs" />
+    <Compile Include="DataObjects\Users.cs" />
+    <Compile Include="DataObjects\UserTasks.cs" />
     <Compile Include="Migrations\201705240756200_InitialCreate.cs" />
     <Compile Include="Migrations\201705240756200_InitialCreate.Designer.cs">
       <DependentUpon>201705240756200_InitialCreate.cs</DependentUpon>
@@ -157,7 +161,12 @@
     <Compile Include="Migrations\201705240808588_Initial.Designer.cs">
       <DependentUpon>201705240808588_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705241453224_Add_Users_UserTasks_Table.cs" />
+    <Compile Include="Migrations\201705241453224_Add_Users_UserTasks_Table.Designer.cs">
+      <DependentUpon>201705241453224_Add_Users_UserTasks_Table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\APIResult.cs" />
     <Compile Include="Models\XamarinHandsOnLabContext.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -183,6 +192,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705240808588_Initial.resx">
       <DependentUpon>201705240808588_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705241453224_Add_Users_UserTasks_Table.resx">
+      <DependentUpon>201705241453224_Add_Users_UserTasks_Table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
