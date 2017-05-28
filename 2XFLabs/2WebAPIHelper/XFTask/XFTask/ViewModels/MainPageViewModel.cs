@@ -4,6 +4,7 @@ using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using XFTask.Helpers;
 
 namespace XFTask.ViewModels
 {
@@ -31,10 +32,13 @@ namespace XFTask.ViewModels
 
         }
 
-        public void OnNavigatedTo(NavigationParameters parameters)
+        public async void OnNavigatedTo(NavigationParameters parameters)
         {
             if (parameters.ContainsKey("title"))
                 Title = (string)parameters["title"] + " and Prism";
+
+            var fooObj = await PCLGlobalHelper.foo使用者登入Repository.GetAsync("user1", "pw1");
+            Title = fooObj.Payload.ToString();
         }
     }
 }

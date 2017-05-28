@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
+﻿
 using Foundation;
 using UIKit;
 using Prism.Unity;
@@ -24,7 +21,17 @@ namespace XFTask.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            #region 第三方套件／插件的初始化
+            // Initialize the Azure Mobile Client SDK
+            // http://stackoverflow.com/questions/24521355/azure-mobile-services-invalid-operation-exception-platform-specific-assembly-n
+            Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
+            #endregion
+
             global::Xamarin.Forms.Forms.Init();
+
+            #region 要使用者允許接收通知之設定
+            #endregion
+
             LoadApplication(new App(new iOSInitializer()));
 
             return base.FinishedLaunching(app, options);

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using XFTask.Repositories;
 
 namespace XFTask.Helpers
 {
@@ -12,15 +13,23 @@ namespace XFTask.Helpers
     /// </summary>
     public class PCLGlobalHelper
     {
-        #region 常用的變數 Constant
+
+        #region Azure Mobile App 相關設定
         /// <summary>
-        /// Web API 的網址，最好使用 Https
+        /// 指向 Azure Mobile App 服務的主要網址
         /// </summary>
-        public static string BaseUrl = "http://xamarinhandsonlab.azurewebsites.net/";
+        public static string MainURL = "http://xamarinhandsonlab.azurewebsites.net/";
+        /// <summary>
+        /// Azure Mobile App 線上版本的用戶端
+        /// </summary>
+        public static MobileServiceClient AzureMobileClient = new MobileServiceClient(MainURL);
+        #endregion
+
+        #region 常用的變數 Constant
         /// <summary>
         /// 呼叫 API 的最上層名稱
         /// </summary>
-        public static string BaseAPIUrl = $"{BaseUrl}api/";
+        public static string BaseAPIUrl = $"{MainURL}api/";
         /// <summary>
         /// 使用者身分驗證的 API 名稱
         /// </summary>
@@ -44,18 +53,9 @@ namespace XFTask.Helpers
         #endregion
 
         #region Repository (此處為方便開發，所以，所有的 Repository 皆為全域靜態可存取
-
-        #endregion
-
-        #region Azure Mobile App 相關設定
-        /// <summary>
-        /// 指向 Azure Mobile App 服務的主要網址
-        /// </summary>
-        public static string MainURL = "http://xamarinhandsonlab.azurewebsites.net";
-        /// <summary>
-        /// Azure Mobile App 線上版本的用戶端
-        /// </summary>
-        public static MobileServiceClient AzureMobileClient = new MobileServiceClient(MainURL);
+        public static 使用者登入Repository foo使用者登入Repository = new 使用者登入Repository();
+        public static 使用者工作內容Repository foo使用者工作內容Repository = new 使用者工作內容Repository();
+        public static 使用者歷史工作內容Repository foo使用者歷史工作內容Repository = new 使用者歷史工作內容Repository();
         #endregion
     }
 }
