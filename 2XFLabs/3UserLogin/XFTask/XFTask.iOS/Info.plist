@@ -53,5 +53,13 @@
     <key>NSPhotoLibraryUsageDescription</key>
     <string>This app needs access to photos.</string>
     <key>NSMicrophoneUsageDescription</key>
-    <string>This app needs access to microphone.</string> </dict>
+    <string>This app needs access to microphone.</string>
+    <key>UIAppFonts</key>
+    <array>
+      <string>iconize-fontawesome.ttf</string>
+      <string>iconize-material.ttf</string>
+      <string>iconize-meteocons.ttf</string>
+      <string>iconize-typicons.ttf</string>
+    </array>
+  </dict>
 </plist>

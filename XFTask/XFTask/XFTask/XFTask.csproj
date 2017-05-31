@@ -50,11 +50,15 @@
     <Compile Include="Repositories\使用者歷史工作內容Repository.cs" />
     <Compile Include="Repositories\使用者工作內容Repository.cs" />
     <Compile Include="Repositories\使用者登入Repository.cs" />
+    <Compile Include="UserControls\ProcessingMask.xaml.cs">
+      <DependentUpon>ProcessingMask.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\CodeScannerPageViewModel.cs" />
     <Compile Include="ViewModels\Items\UserTasksVM.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\MDPageViewModel.cs" />
     <Compile Include="ViewModels\NaviPageViewModel.cs" />
+    <Compile Include="ViewModels\Items\ProcessingMaskVM.cs" />
     <Compile Include="ViewModels\SamplePageViewModel.cs" />
     <Compile Include="ViewModels\SigninPageViewModel.cs" />
     <Compile Include="ViewModels\TaskEditPageViewModel.cs" />
@@ -221,7 +225,6 @@
     <Folder Include="Behaviors\" />
     <Folder Include="CustomControls\" />
     <Folder Include="Infrastructure\" />
-    <Folder Include="UserControls\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\SigninPage.xaml">
@@ -267,6 +270,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\SamplePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="UserControls\ProcessingMask.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

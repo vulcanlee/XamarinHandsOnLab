@@ -44,7 +44,15 @@
     <Compile Include="Repositories\使用者工作內容Repository.cs" />
     <Compile Include="Repositories\使用者歷史工作內容Repository.cs" />
     <Compile Include="Repositories\使用者登入Repository.cs" />
+    <Compile Include="UserControls\ProcessingMask.xaml.cs">
+      <DependentUpon>ProcessingMask.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\MainPageViewModel.cs" />
+    <Compile Include="ViewModels\Items\ProcessingMaskVM.cs" />
+    <Compile Include="ViewModels\SigninPageViewModel.cs" />
+    <Compile Include="Views\SigninPage.xaml.cs">
+      <DependentUpon>SigninPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App.xaml">
@@ -149,6 +157,18 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\SigninPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="UserControls\ProcessingMask.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="FodyWeavers.xml" />

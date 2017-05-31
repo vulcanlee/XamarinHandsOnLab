@@ -84,7 +84,7 @@ namespace XFTask.Droid.Infrastructure
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine(ex.Message);
-                Debugger.Break();
+                //Debugger.Break();
             }
             #endregion
         }

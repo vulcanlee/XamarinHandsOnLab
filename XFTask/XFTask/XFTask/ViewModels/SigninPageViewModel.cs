@@ -60,6 +60,19 @@ namespace XFTask.ViewModels
         }
         #endregion
 
+
+        #region ProcessingMask
+        private ProcessingMaskVM _ProcessingMask = new ProcessingMaskVM();
+        /// <summary>
+        /// ProcessingMaskVM
+        /// </summary>
+        public ProcessingMaskVM ProcessingMask
+        {
+            get { return this._ProcessingMask; }
+            set { this.SetProperty(ref this._ProcessingMask, value); }
+        }
+        #endregion
+
         #endregion
 
         #region 集合類別的 Property
@@ -102,7 +115,12 @@ namespace XFTask.ViewModels
             #region 頁面中綁定的命令
             登入Command = new DelegateCommand(async () =>
             {
+                ProcessingMask.IsRunning = true;
+                ProcessingMask.ProcessingTitle = "請稍後，正在忙碌中";
+                ProcessingMask.ProcessingContent = "進行使用者身分驗證...";
                 忙碌中遮罩 = true;
+                return;
+
                 //使用者身分驗證：登入
                 var fooResult = await PCLGlobalHelper.foo使用者登入Repository.GetAsync(帳號, 密碼);
                 if (fooResult.Success == false)
@@ -117,6 +135,7 @@ namespace XFTask.ViewModels
                     await PCLGlobalHelper.foo使用者歷史工作內容Repository.Write();
                     await _navigationService.NavigateAsync("xf:///MDPage/NaviPage/MainPage");
                 }
+                ProcessingMask.IsRunning = false;
                 忙碌中遮罩 = false;
             });
             #endregion

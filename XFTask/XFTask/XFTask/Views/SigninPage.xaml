@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:userControl="clr-namespace:XFTask.UserControls"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="XFTask.Views.SigninPage">
 
@@ -39,11 +40,16 @@
         </StackLayout>
 
         <!--當進行登入，進行網路 Web API 呼叫的時候，會顯示這個半透明的遮罩-->
-        <BoxView
+        <userControl:ProcessingMask
+            Grid.RowSpan="2"
+            BindingContext="{Binding ProcessingMask}"
+            IsVisible="{Binding IsRunning}"
+            />
+        <!--<BoxView
             Grid.Row="0" Grid.Column="0"
             Grid.RowSpan="2"
             Color="Black"
             Opacity="0.7"
-            IsVisible="{Binding 忙碌中遮罩}"/>
+            IsVisible="{Binding 忙碌中遮罩}"/>-->
     </Grid>
 </ContentPage>

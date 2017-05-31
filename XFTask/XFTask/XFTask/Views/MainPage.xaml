@@ -7,6 +7,10 @@
              x:Class="XFTask.Views.MainPage"
              Title="待處理的工作">
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="更新" Command="{Binding DoRefreshCommand}" />
+    </ContentPage.ToolbarItems>
+    
     <!--這個頁面將會顯示這個使用者尚未處理完成的所有工作清單-->
     <Grid
         RowSpacing="0" ColumnSpacing="0">
@@ -46,7 +50,7 @@
                             <!--每筆紀錄共有兩列，都是一樣的高度-->
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*" />
-                                <RowDefinition Height="*" />
+                                <RowDefinition Height="18" />
                             </Grid.RowDefinitions>
                             <!--每筆紀錄有兩個欄位，第一個欄位固定式 120 ，第二個欄位則是剩餘的空間-->
                             <Grid.ColumnDefinitions>
@@ -60,14 +64,14 @@
                                 Margin="10,0"
                                 VerticalOptions="Center" HorizontalOptions="Center"
                                 Text="{Binding Status, Converter={StaticResource TaskStatusToStringConverter}}"
-                                FontSize="Large"
+                                FontSize="24"
                                 TextColor="Pink"
                                 />
                             <!--該工作的主題名稱-->
                             <Label
                                 Grid.Row="0" Grid.Column="1"
                                 Text="{Binding Title}"
-                                FontSize="Large"
+                                FontSize="24"
                                 />
                             <!--該工作的產生時間-->
                             <Label
