@@ -117,27 +117,6 @@ namespace XFTask.ViewModels
         public async void OnNavigatedTo(NavigationParameters parameters)
         {
             await ViewModelInit();
-            //PCLGlobalHelper.Init();
-            //var foo1 = new 使用者登入Repository();
-            //var foostr = MainHelper.BaseUrl;
-
-
-            //PCLGlobal.foo使用者登入Repository = new 使用者登入Repository();
-
-            try
-            {
-                var fooIt = 0;
-                await PCLGlobalHelper.foo使用者登入Repository.Read();
-                if (string.IsNullOrEmpty(PCLGlobalHelper.foo使用者登入Repository.Item.Account) == false)
-                {
-                    await _navigationService.NavigateAsync("xf:///MDPage/NaviPage/MainPage");
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex.Message);
-            }
-
         }
         #endregion
 
