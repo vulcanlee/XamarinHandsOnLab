@@ -2,7 +2,110 @@
 <MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                   xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+                  xmlns:circleImage="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
                   prism:ViewModelLocator.AutowireViewModel="True"
                   x:Class="XFTask.Views.MDPage">
-  
+
+    <MasterDetailPage.Master>
+        <!--導航抽屜頁面的抽屜畫面內容宣告-->
+        <ContentPage
+            Title="Menu"
+            >
+            <!--宣告漢堡按鈕圖片-->
+            <ContentPage.Icon>
+                <!--因為每個平台的圖片路徑不同，所以，需要使用 OnPlatform 來指定不同平台的圖片名稱-->
+                <OnPlatform x:TypeArguments="FileImageSource"
+                            iOS="hamburger.png"
+                            Android="hamburger.png"
+                            WinPhone="Assets/hamburger.png" />
+            </ContentPage.Icon>
+            <Grid
+                RowSpacing="0" ColumnSpacing="0"
+                BackgroundColor="#77bbce"
+                >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="150"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+
+                <!--這裡宣告最上方的使用者登入資訊與公司名稱的樣貌-->
+                <Grid
+                    RowSpacing="0" ColumnSpacing="0">
+                    <BoxView
+                        Color="Blue"/>
+                    <Image
+                        HorizontalOptions="Fill" VerticalOptions="Fill"
+                        Aspect="AspectFill"
+                        >
+                        <!--背景圖片-->
+                        <Image.Source>
+                            <!--因為每個平台的圖片路徑不同，所以，需要使用 OnPlatform 來指定不同平台的圖片名稱-->
+                            <OnPlatform x:TypeArguments="ImageSource"
+                                        iOS="DrawerBackground.png"
+                                        Android="DrawerBackground.png"
+                                        WinPhone="Assets/DrawerBackground.png"
+                                        />
+                        </Image.Source>
+                    </Image>
+                    <circleImage:CircleImage
+                        Source="{Binding UserPhoto}"
+                        BorderThickness="3"
+                        BorderColor="White"
+                        HorizontalOptions="End" VerticalOptions="Start"
+                        Margin="0,10,10,0"
+                        HeightRequest="50" WidthRequest="50"/>
+                    <Label
+                        Text="{Binding UserName, StringFormat='使用者名稱：{0}'}"
+                        TextColor="White"
+                        Opacity="0.5"
+                        FontSize="Medium"
+                        Margin="10,20,0,0"
+                        HorizontalOptions="Start" VerticalOptions="Start"
+                        />
+                    <Label
+                        Text="Xamarin 實驗室"
+                        TextColor="Yellow"
+                        Opacity="0.8"
+                        FontSize="Large"
+                        Margin="10,0,0,20"
+                        HorizontalOptions="Start" VerticalOptions="End"
+                        />
+                </Grid>
+
+                <!--這裡使用捲動面板配置，宣告各種可以使用的功能-->
+                <ScrollView
+                    Grid.Row="1"
+                    Orientation="Vertical">
+                    <StackLayout
+                        Margin="10,20"
+                        Orientation="Vertical">
+                        <Button
+                            Text="待處理工作"
+                            Command="{Binding 尚未完成派工單Command}"/>
+
+                        <Button
+                            Text="歷史工作"
+                            Command="{Binding 歷史派工單Command}"/>
+                        <Button
+                            Text="模擬可掃描的 QRCode"
+                            Command="{Binding 模擬可掃描的QRCodeCommand}"
+                            />
+                        <!--這個按鈕僅會在使用 admin 帳號登入的時候，才會出現-->
+                        <Button
+                            Text="管理者模式命令"
+                            Command="{Binding 管理者模式命令Command}"
+                            IsVisible="{Binding 管理者模式}"/>
+                        <Button
+                            Text="更新 App"
+                            Command="{Binding 更新AppCommand}"
+                            />
+                        <Button
+                            Text="登出"
+                            Command="{Binding 登出Command}"/>
+                    </StackLayout>
+                </ScrollView>
+            </Grid>
+        </ContentPage>
+    </MasterDetailPage.Master>
 </MasterDetailPage>
