@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:userControl="clr-namespace:XFTask.UserControls"
+             xmlns:iconize="clr-namespace:FormsPlugin.Iconize;assembly=FormsPlugin.Iconize"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="XFTask.Views.SigninPage">
+
+    <!--使用者帳戶與密碼登入身分驗證頁面-->
+    <Grid
+        RowSpacing="0" ColumnSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="200" />
+        </Grid.RowDefinitions>
+
+        <StackLayout
+            Grid.Row="0" Grid.Column="0"
+            Orientation="Vertical"
+            HorizontalOptions="Fill" VerticalOptions="Center"
+            Margin="30,20">
+            <iconize:IconLabel
+                FontSize="30"
+                Text="fa-user"  />
+            <Entry 
+                Text="{Binding 帳號}"
+                Placeholder="請輸入登入之帳號"
+                />
+
+            <iconize:IconLabel
+                FontSize="30"
+                Text="fa-keyboard-o"  />
+            <Entry 
+                Text="{Binding 密碼}"
+                Placeholder="請輸入登入帳號之驗證密碼"
+                IsPassword="True"/>
+        </StackLayout>
+
+        <StackLayout
+            Grid.Row="1" Grid.Column="0"
+            Orientation="Vertical"
+            HorizontalOptions="Fill" VerticalOptions="Center"
+            Margin="30,0">
+            <Button Text="登入" Command="{Binding 登入Command}" />
+        </StackLayout>
+
+        <!--當進行登入，進行網路 Web API 呼叫的時候，會顯示這個半透明的遮罩-->
+        <userControl:ProcessingMask
+            Grid.RowSpan="2"
+            BindingContext="{Binding ProcessingMask}"
+            IsVisible="{Binding IsRunning}"
+            />
+        <!--<BoxView
+            Grid.Row="0" Grid.Column="0"
+            Grid.RowSpan="2"
+            Color="Black"
+            Opacity="0.7"
+            IsVisible="{Binding 忙碌中遮罩}"/>-->
+    </Grid>
+</ContentPage>
