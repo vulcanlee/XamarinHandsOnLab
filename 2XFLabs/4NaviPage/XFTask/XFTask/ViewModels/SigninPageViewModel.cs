@@ -90,7 +90,7 @@ namespace XFTask.ViewModels
                     PCLGlobalHelper.foo使用者歷史工作內容Repository.Items = new List<Models.UserTasks>();
                     await PCLGlobalHelper.foo使用者工作內容Repository.Write();
                     await PCLGlobalHelper.foo使用者歷史工作內容Repository.Write();
-                    await _navigationService.NavigateAsync("MainPage");
+                    await _navigationService.NavigateAsync("xf:///MDPage/NaviPage/MainPage");
                 }
                 ProcessingMask.IsRunning = false;
                 忙碌中遮罩 = false;
@@ -117,6 +117,19 @@ namespace XFTask.ViewModels
         public async void OnNavigatedTo(NavigationParameters parameters)
         {
             await ViewModelInit();
+            try
+            {
+                await PCLGlobalHelper.foo使用者登入Repository.Read();
+                if (string.IsNullOrEmpty(PCLGlobalHelper.foo使用者登入Repository.Item.Account) == false)
+                {
+                    await _navigationService.NavigateAsync("xf:///MDPage/NaviPage/MainPage");
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+
         }
         #endregion
 

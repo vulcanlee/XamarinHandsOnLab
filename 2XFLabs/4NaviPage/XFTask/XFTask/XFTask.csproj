@@ -35,6 +35,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Converters\TaskStatusToStringConverter.cs" />
+    <Compile Include="Converters\TaskStatusToVisibleConverter.cs" />
     <Compile Include="Helpers\PCLGlobalHelper.cs" />
     <Compile Include="Helpers\StorageUtility.cs" />
     <Compile Include="Models\APIResult.cs" />
@@ -56,6 +58,7 @@
     <Compile Include="ViewModels\MDPageViewModel.cs" />
     <Compile Include="ViewModels\NaviPageViewModel.cs" />
     <Compile Include="ViewModels\SigninPageViewModel.cs" />
+    <Compile Include="ViewModels\Items\UserTasksVM.cs" />
     <Compile Include="Views\MDPage.xaml.cs">
       <DependentUpon>MDPage.xaml</DependentUpon>
     </Compile>

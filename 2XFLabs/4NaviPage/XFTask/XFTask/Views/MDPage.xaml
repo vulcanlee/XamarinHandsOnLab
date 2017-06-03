@@ -3,6 +3,7 @@
                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                   xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
                   xmlns:circleImage="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+                  xmlns:userControls="clr-namespace:XFTask.UserControls"
                   prism:ViewModelLocator.AutowireViewModel="True"
                   x:Class="XFTask.Views.MDPage">
 
@@ -80,29 +81,27 @@
                     <StackLayout
                         Margin="10,20"
                         Orientation="Vertical">
-                        <Button
-                            Text="待處理工作"
-                            Command="{Binding 尚未完成派工單Command}"/>
 
-                        <Button
-                            Text="歷史工作"
-                            Command="{Binding 歷史派工單Command}"/>
-                        <Button
-                            Text="模擬可掃描的 QRCode"
-                            Command="{Binding 模擬可掃描的QRCodeCommand}"
+                        <userControls:DrawerMenu
+                            BindingContext="{Binding DrawerMenuVM代處理工作}"
+                            Margin="30,0"
                             />
-                        <!--這個按鈕僅會在使用 admin 帳號登入的時候，才會出現-->
-                        <Button
-                            Text="管理者模式命令"
-                            Command="{Binding 管理者模式命令Command}"
-                            IsVisible="{Binding 管理者模式}"/>
-                        <Button
-                            Text="更新 App"
-                            Command="{Binding 更新AppCommand}"
+                        <userControls:DrawerMenu
+                            BindingContext="{Binding DrawerMenuVM歷史工作}"
+                            Margin="30,0"
                             />
-                        <Button
-                            Text="登出"
-                            Command="{Binding 登出Command}"/>
+                        <userControls:DrawerMenu
+                            BindingContext="{Binding DrawerMenuVM模擬可掃描QRCode}"
+                            Margin="30,0"
+                            />
+                        <userControls:DrawerMenu
+                            BindingContext="{Binding DrawerMenuVM更新App}"
+                            Margin="30,0"
+                            />
+                        <userControls:DrawerMenu
+                            BindingContext="{Binding DrawerMenuVM登出}"
+                            Margin="30,0"
+                            />
                     </StackLayout>
                 </ScrollView>
             </Grid>

@@ -4,10 +4,12 @@
              xmlns:iconize="clr-namespace:FormsPlugin.Iconize;assembly=FormsPlugin.Iconize"
              xmlns:behaviors="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
              x:Class="XFTask.UserControls.DrawerMenu">
-    
-  <ContentView.Content>
+
+    <ContentView.Content>
         <Grid
-          RowSpacing="0" ColumnSpacing="0">
+            RowSpacing="0" ColumnSpacing="0"
+            HeightRequest="50"
+            >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="30"/>
                 <ColumnDefinition Width="*"/>
@@ -16,7 +18,7 @@
             <iconize:IconLabel
                 Grid.Row="0" Grid.Column="0"
                 HorizontalOptions="Center" VerticalOptions="Center"
-                FontSize="22"
+                FontSize="28"
                 Text="{Binding IconName}">
                 <iconize:IconLabel.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding DrawMenuCommand}"/>
@@ -26,7 +28,7 @@
             <Label
                 Grid.Row="0" Grid.Column="1"
                 HorizontalOptions="Start" VerticalOptions="Center"
-                FontSize="18"
+                FontSize="24"
                 Text="{Binding MenuName}">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding DrawMenuCommand}"/>
@@ -34,5 +36,5 @@
             </Label>
 
         </Grid>
-  </ContentView.Content>
+    </ContentView.Content>
 </ContentView>
