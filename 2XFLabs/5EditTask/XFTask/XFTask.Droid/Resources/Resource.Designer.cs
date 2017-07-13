@@ -67,6 +67,12 @@ namespace XFTask.Droid
 			global::PCLStorage.Resource.String.Hello = global::XFTask.Droid.Resource.String.Hello;
 			global::Splat.Resource.String.library_name = global::XFTask.Droid.Resource.String.library_name;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::XFTask.Droid.Resource.Attribute.actionBarSize;
+			global::ZXing.Net.Mobile.Forms.Android.Resource.Layout.zxingscanneractivitylayout = global::XFTask.Droid.Resource.Layout.zxingscanneractivitylayout;
+			global::ZXing.Net.Mobile.Forms.Android.Resource.Layout.zxingscannerfragmentlayout = global::XFTask.Droid.Resource.Layout.zxingscannerfragmentlayout;
+			global::ZXing.Net.Mobile.Forms.Android.Resource.String.library_name = global::XFTask.Droid.Resource.String.library_name;
+			global::ZXing.Mobile.Resource.Id.contentFrame = global::XFTask.Droid.Resource.Id.contentFrame;
+			global::ZXing.Mobile.Resource.Layout.zxingscanneractivitylayout = global::XFTask.Droid.Resource.Layout.zxingscanneractivitylayout;
+			global::ZXing.Mobile.Resource.Layout.zxingscannerfragmentlayout = global::XFTask.Droid.Resource.Layout.zxingscannerfragmentlayout;
 		}
 		
 		public partial class Animation
@@ -2412,6 +2418,9 @@ namespace XFTask.Droid
 			// aapt resource value: 0x7f07001f
 			public const int collapseActionView = 2131165215;
 			
+			// aapt resource value: 0x7f07009e
+			public const int contentFrame = 2131165342;
+			
 			// aapt resource value: 0x7f07004a
 			public const int contentPanel = 2131165258;
 			
@@ -3050,6 +3059,12 @@ namespace XFTask.Droid
 			
 			// aapt resource value: 0x7f03003b
 			public const int toolbar = 2130903099;
+			
+			// aapt resource value: 0x7f03003c
+			public const int zxingscanneractivitylayout = 2130903100;
+			
+			// aapt resource value: 0x7f03003d
+			public const int zxingscannerfragmentlayout = 2130903101;
 			
 			static Layout()
 			{

@@ -46,6 +46,7 @@ namespace XFTask.Droid
             global::Xamarin.Forms.Forms.Init(this, bundle);
 
             #region 第三方套件／插件的初始化
+            ZXing.Net.Mobile.Forms.Android.Platform.Init();
             Acr.UserDialogs.UserDialogs.Init(this);
             var rendererAssemblies = new[] { typeof(ImageCircle.Forms.Plugin.Droid.ImageCircleRenderer) };
             #region 進行 Iconize 套件的初始化

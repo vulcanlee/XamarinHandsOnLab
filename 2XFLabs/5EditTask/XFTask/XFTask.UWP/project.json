@@ -11,11 +11,13 @@
     "Prism.Unity.Forms": "6.3.0",
     "Unity": "4.0.1",
     "Xam.FormsPlugin.Iconize": "1.0.10",
+    "Xam.Plugin.Geolocator": "4.0.1",
     "Xam.Plugin.Iconize": "1.0.10",
     "Xam.Plugin.Iconize.FontAwesome": "1.0.10",
     "Xam.Plugin.Media": "2.6.2",
     "Xam.Plugins.Forms.ImageCircle": "1.8.1",
-    "Xamarin.Forms": "2.3.4.247"
+    "Xamarin.Forms": "2.3.4.247",
+    "ZXing.Net.Mobile.Forms": "2.2.9"
   },
   "frameworks": {
     "uap10.0": {}

@@ -84,6 +84,7 @@ namespace XFTask.ViewModels
             #endregion
 
             #region 事件聚合器訂閱
+            #endregion
 
             #region 選單項目初始化
             DrawerMenuVM代處理工作.MenuName = "代處理工作";
@@ -136,7 +137,6 @@ namespace XFTask.ViewModels
             //
             //
 
-            #endregion
             #endregion
         }
 
