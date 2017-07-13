@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="XFTask.Views.TaskHistoryDetailPage"
+             Title="工作記錄"
+             >
+
+    <!--查詢歷史資料的時候，使用這個頁面，提供唯讀的頁面操作-->
+    <ScrollView
+        Orientation="Vertical">
+        <StackLayout
+            Orientation="Vertical"
+            Spacing="0"
+            Margin="10">
+
+            <!--工作說明-->
+            <Grid
+                RowSpacing="0" ColumnSpacing="0"
+                HeightRequest="40"
+                HorizontalOptions="Fill">
+                <BoxView
+                    Color="Black"/>
+                <Label 
+                    Text="工作說明"
+                    HorizontalOptions="Center" VerticalOptions="Center"
+                    TextColor="White"/>
+            </Grid>
+
+            <Grid
+                RowSpacing="0" ColumnSpacing="0"
+                HorizontalOptions="Fill">
+                <BoxView
+                    Color="Gray"/>
+                <StackLayout
+                    Margin="10,0"
+                    >
+                    <Label 
+                        Text="{Binding CurrentUserTasksVM.Title}"
+                        HorizontalOptions="Fill" VerticalOptions="Start"
+                        TextColor="White"
+                        FontSize="Large"/>
+                    <Label 
+                        Text="{Binding CurrentUserTasksVM.Description}"
+                        HorizontalOptions="Fill" VerticalOptions="Start"
+                        TextColor="White"
+                        />
+                </StackLayout>
+            </Grid>
+
+            <!--工作狀態-->
+            <Grid
+                RowSpacing="0" ColumnSpacing="0"
+                HeightRequest="40"
+                HorizontalOptions="Fill"
+                Margin="0,20,0,0">
+                <BoxView
+                    Color="Black"/>
+                <Label 
+                    Text="工作狀態"
+                    HorizontalOptions="Center" VerticalOptions="Center"
+                    TextColor="White"/>
+            </Grid>
+
+            <Grid
+                RowSpacing="0" ColumnSpacing="0"
+                HorizontalOptions="Fill">
+                <BoxView
+                    Color="Gray"/>
+                <StackLayout
+                    Margin="10,0"
+                    >
+                    <Label 
+                        Text="{Binding CurrentUserTasksVM.Status, Converter={StaticResource TaskStatusToStringConverter}}"
+                        HorizontalOptions="Fill" VerticalOptions="Start"
+                        TextColor="White"
+                        FontSize="Large"/>
+                </StackLayout>
+            </Grid>
+
+            <!--地點打卡-->
+            <Grid
+                RowSpacing="0" ColumnSpacing="0"
+                HeightRequest="40"
+                HorizontalOptions="Fill"
+                Margin="0,20,0,0">
+                <BoxView
+                    Color="Black"/>
+                <Label 
+                    Text="地點打卡"
+                    HorizontalOptions="Center" VerticalOptions="Center"
+                    TextColor="White"/>
+            </Grid>
+
+            <Grid
+                RowSpacing="0" ColumnSpacing="0"
+                HorizontalOptions="Fill">
+                <BoxView
+                    Color="Gray"/>
+                <StackLayout
+                    Margin="10,0"
+                    >
+                    <Label 
+                        Text="打卡緯度"
+                        HorizontalOptions="Fill" VerticalOptions="Start"
+                        TextColor="White"
+                        FontSize="Medium"/>
+                    <Label 
+                        Text="{Binding CurrentUserTasksVM.Checkin_Latitude}"
+                        HorizontalOptions="Fill" VerticalOptions="Start"
+                        TextColor="White"
+                        />
+                    <Label 
+                        Text="打卡經度"
+                        HorizontalOptions="Fill" VerticalOptions="Start"
+                        TextColor="White"
+                        FontSize="Medium"/>
+                    <Label 
+                        Text="{Binding CurrentUserTasksVM.Checkin_Longitude}"
+                        HorizontalOptions="Fill" VerticalOptions="Start"
+                        TextColor="White"
+                        />
+
+                    <Label 
+                        Text="打卡時間"
+                        HorizontalOptions="Fill" VerticalOptions="Start"
+                        TextColor="White"
+                        FontSize="Medium"/>
+                    <Label 
+                        Text="{Binding CurrentUserTasksVM.CheckinDatetime}"
+                        HorizontalOptions="Fill" VerticalOptions="Start"
+                        TextColor="White"
+                        />
+                </StackLayout>
+            </Grid>
+
+            <!--工作資料輸入-->
+            <Grid
+                RowSpacing="0" ColumnSpacing="0"
+                HeightRequest="40"
+                HorizontalOptions="Fill"
+                Margin="0,20,0,0">
+                <BoxView
+                    Color="Black"/>
+                <Label 
+                    Text="工作資料輸入"
+                    HorizontalOptions="Center" VerticalOptions="Center"
+                    TextColor="White"/>
+            </Grid>
+
+            <Grid
+                RowSpacing="0" ColumnSpacing="0"
+                HorizontalOptions="Fill">
+                <BoxView
+                    Color="Gray"/>
+                <StackLayout
+                    Margin="10,0"
+                    >
+                    <Label 
+                        Text="{Binding CurrentUserTasksVM.Condition1_Ttile}"
+                        HorizontalOptions="Fill" VerticalOptions="Start"
+                        TextColor="White"/>
+                    <Label
+                        Text="{Binding CurrentUserTasksVM.Condition1_Result}"
+                        HorizontalOptions="Fill" VerticalOptions="Start"
+                        TextColor="White" />
+                    <Label 
+                        Margin="0,10,0,0"
+                        Text="{Binding CurrentUserTasksVM.Condition2_Ttile}"
+                        HorizontalOptions="Fill" VerticalOptions="Start"
+                        TextColor="White"/>
+                    <Label
+                        Text="{Binding CurrentUserTasksVM.Condition2_Result}"
+                        HorizontalOptions="Fill" VerticalOptions="Start" 
+                        TextColor="White"/>
+                    <Label 
+                        Margin="0,10,0,0"
+                        Text="{Binding CurrentUserTasksVM.Condition3_Ttile}"
+                        HorizontalOptions="Fill" VerticalOptions="Start"
+                        TextColor="White"/>
+                    <Label
+                        Text="{Binding CurrentUserTasksVM.Condition3_Result}"
+                        HorizontalOptions="Fill" VerticalOptions="Start"
+                        TextColor="White" />
+                </StackLayout>
+            </Grid>
+
+            <!--拍照與照片上傳-->
+            <Grid
+                RowSpacing="0" ColumnSpacing="0"
+                HeightRequest="40"
+                HorizontalOptions="Fill"
+                Margin="0,20,0,0">
+                <BoxView
+                    Color="Black"/>
+                <Label 
+                    Text="拍照與照片上傳"
+                    HorizontalOptions="Center" VerticalOptions="Center"
+                    TextColor="White"/>
+            </Grid>
+
+            <Grid
+                RowSpacing="0" ColumnSpacing="0"
+                HorizontalOptions="Fill">
+                <BoxView
+                    Color="Gray"/>
+                <StackLayout
+                    Margin="10,0"
+                    >
+                    <Label 
+                        Text="拍照圖片"
+                        HorizontalOptions="Fill" VerticalOptions="Start"
+                        TextColor="White"
+                        FontSize="Large"/>
+                    <Image 
+                        Source="{Binding CurrentUserTasksVM.PhotoURL}"
+                        HorizontalOptions="FillAndExpand" VerticalOptions="Start"
+                        HeightRequest="200"
+                        Aspect="AspectFit"/>
+                </StackLayout>
+            </Grid>
+
+            <!--工作回報-->
+            <Grid
+                RowSpacing="0" ColumnSpacing="0"
+                HeightRequest="40"
+                HorizontalOptions="Fill"
+                Margin="0,20,0,0">
+                <BoxView
+                    Color="Black"/>
+                <Label 
+                    Text="工作回報"
+                    HorizontalOptions="Center" VerticalOptions="Center"
+                    TextColor="White"/>
+            </Grid>
+
+            <Grid
+                RowSpacing="0" ColumnSpacing="0"
+                HorizontalOptions="Fill">
+                <BoxView
+                    Color="Gray"/>
+                <StackLayout
+                    Margin="10,0"
+                    >
+                    <Label 
+                        Text="工作回報時間"
+                        HorizontalOptions="Fill" VerticalOptions="Start"
+                        TextColor="White"
+                        FontSize="Medium"/>
+                    <Label 
+                        Text="{Binding CurrentUserTasksVM.ReportedDatetime}"
+                        HorizontalOptions="Fill" VerticalOptions="Start"
+                        TextColor="White"
+                        />
+
+                </StackLayout>
+            </Grid>
+
+            <Label
+                Margin="0,30"/>
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                        xmlns:prism="clr-namespace:Prism.Unity;assembly=Prism.Unity.Forms"
+                        xmlns:converter="clr-namespace:XFTask.Converters"
+                        x:Class="XFTask.App">
+
+  <prism:PrismApplication.Resources>
+    <ResourceDictionary>
+      <converter:TaskStatusToStringConverter x:Key="TaskStatusToStringConverter" />
+      <converter:TaskStatusToVisibleConverter x:Key="TaskCHECKINToVisibleConverter" WatchStatus="CHECKIN"/>
+      <converter:TaskStatusToVisibleConverter x:Key="TaskINPUTToVisibleConverter" WatchStatus="INPUT"/>
+      <converter:TaskStatusToVisibleConverter x:Key="TaskREPORTEDToVisibleConverter" WatchStatus="REPORTED"/>
+      <converter:TaskStatusToVisibleConverter x:Key="TaskUPLOAD_IMAGEToVisibleConverter" WatchStatus="UPLOAD_IMAGE"/>
+      <converter:TaskStatusToVisibleConverter x:Key="TaskNOT_STARTToVisibleConverter" WatchStatus="NOT_START"/>
+    </ResourceDictionary>
+  </prism:PrismApplication.Resources>
+
+</prism:PrismApplication>
