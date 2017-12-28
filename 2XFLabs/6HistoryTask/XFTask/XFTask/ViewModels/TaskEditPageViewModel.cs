@@ -414,7 +414,7 @@ namespace XFTask.ViewModels
                     Directory = "Sample",
                     Name = "Sample.jpg",
                     CompressionQuality = 92,
-                    PhotoSize = Plugin.Media.Abstractions.PhotoSize.Full,
+                    PhotoSize = Plugin.Media.Abstractions.PhotoSize.Small,
 
                 });
             }
